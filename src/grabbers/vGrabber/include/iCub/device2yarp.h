@@ -432,6 +432,7 @@ private:
 
     yarp::os::Bottle* bottle2send;                              // bottle to send on the eventBottle port
     
+
     int r;                                         // dimension of the received buffer of event for display
     int countAEs;                                  // counter of the received AEs
     FILE* raw;

@@ -739,14 +739,436 @@ void device2yarp::closeDevice(){
     close(file_desc);
 }
 
+//void  device2yarp::run() {
+//    bool printExa = true;
+
+//    r = read(file_desc, pmonatom, monBufSize_b);
+//    //printf("received %d bytes \n", r);
+//    //r = read(file_desc, &buffer, monBufSize_b);
+//    //printf("called read() with monBufSize_b == %d -> retval: %d\n", (int)monBufSize_b, (int)r);
+    
+//    if(r < 0) {
+//        if (errno == EAGAIN) {
+//            // everything ok, just no data available at the moment...
+//            // we will be called again in a few miliseconds..
+//            return;
+//        } else {
+//            printf("error reading from aerfx2: %d\n", (int)errno);
+//            perror("perror:");
+//            return;
+//        }
+//    }
+    
+//    int sizeofstructaer  = sizeof(struct aer);
+//    int sizeofstructatom = sizeof(struct atom);
+
+
+//    //*******************************************************************************************************
+//    // STATISTICS ON GAEP EVENT FLOW
+
+//    // check error of extra byte
+//    if (r % sizeofstructatom != 0) {
+//        printf("ERROR: read %d bytes from the AEX!!!\n", r);
+//    }
+//    monBufEvents = r / (sizeofstructatom);
+//    countAEs += monBufEvents;
+
+//    int k = 0;
+//    int k2 = 0;
+//    char*       pBuffer = &buffer[0];
+//    uint32_t *     buf2 = (uint32_t*)          pBuffer;
+//    unsigned char* buf1 = (unsigned char*)     pmonatom;
+//    u32 a, t, c;
+//    u32 tempA, tempA_unmasked, tempB, tempB_unmasked;
+//    u32 tempC_unmasked;
+//    int alow, ahigh;
+//    int tlow, thigh;
+//    int lastTSindex = -1;
+//    int lastAEindex = -1;
+//    int countEventSent = 0;
+//    int countUndetectedWA = 0;
+
+//    yarp::os::Bottle tmpBottle;
+//    for (int i = 0; i < monBufEvents ; i++ ) {
+  
+           
+//        tempA = pmonatom[i].data;
+
+//        std::cout << tempA << std::endl;
+//        continue;
+
+//        // dumping the atom as it is
+//        /*
+//        if(save) {
+//            fprintf(fout, "     %08X  \n",tempA);
+//        }
+//        */
+        
+//        // running statistic of the received train of events
+//        tempA_unmasked = (tempA & 0xFC000000) >> 26;
+        
+//        // ------ CONTROL MESSAGE  ------------
+//        if(tempA_unmasked == 0x31) {
+//            printf("CONTROL MESSAGE ");
+//            tempC_unmasked = tempA & 0x00FFFFFF;
+//            printf("  %d address events lost \n", tempC_unmasked);
+//            c = tempA;
+//            countLostAE += tempC_unmasked;
+            
+//            lastTSindex = -1;
+//            lastAEindex = -1;
+            
+//        }
+//        // ---------- ADDRESS EVENT -----------------
+//        else if(tempA_unmasked == 0x00 ){
+    
+//            a = tempA;
+            
+//            if((countData - lastAEindex != 2) && (lastAEindex != -1)) {
+//                printf("ERROR AE 1 > %d %d %08X \n",  countData, lastAEindex, a);
+//                countErrorsAE++;
+//                //a = 0xDEADDEAD;
+//            }
+//            lastAEindex = countData;
+//            countInWraps++;
+            
+//            a &= 0x0000FFFF; //removing extra bits which do not match the protocol
+//            if(sync)
+//            {
+//                printf("Add sync bit\n");
+//                a+=0x00010000;
+//                //fprintf(fout,"**sync**\n");
+//                sync=false;
+//            }
+
+//            if (save) {
+//                if(printExa) {
+//                    fprintf(fout,"%08X \n",a);
+//                }
+//                else {
+//                    fprintf(fout,"%lu,",(long unsigned int)a);
+//                }
+//            }
+
+//            if(!timestampAvailable)
+//            {
+//                std::cerr << "An addressevent occured without a preceeding "
+//                             "timestamp. This really shouldn't happen but it "
+//                             "did, so perhaps check it out!" << std::endl;
+//                continue;
+//            }
+
+//            //first put in our associate timestamp (it could be from the last
+//            //buffer of events!)
+//            buf2[k2++] = associatedTimestamp;
+//            bottle2send->addInt(associatedTimestamp);
+//            timestampAvailable = false;
+
+//            //then put in our address
+
+//            buf2[k2++] = a;   // passing the address event to the data flow to send
+//            countEventSent++;
+
+//            //tmpBottle.addInt(tempA); //<----- used in the alternative B
+//            bottle2send->addInt(tempA);
+
+//        }
+//        // -------------- TIMESTAMP EVENT ----------------
+//        else if (tempA_unmasked == 0x20) {
+//            t = tempA;
+//            countInWrapsTS++;
+            
+//            tempC_unmasked = (tempA & 0x03000000) >> 24; // buffer overflow
+//            if(tempC_unmasked == 0x01) {
+//                //printf("BUFFER OVERFLOW  \n");
+//                countErrorsGAEP1++;
+//            }
+//            //time stamp sequence error
+//            tempC_unmasked = (tempA & 0x03000000) >> 24; // timestamp error
+//            if(tempC_unmasked == 0x02) {
+//                //printf("TIMESTAMP ERROR %08X \n",tempA);
+//                countErrorsGAEP2++;
+//            }
+//            //address event sequence error
+//            tempC_unmasked = (tempA & 0x03000000) >> 24; // address error
+//            if(tempC_unmasked == 0x03) {
+//                //printf("ADDRESS ERROR %08X \n", tempA);
+//                countErrorsGAEP3++;
+//            }
+            
+//            // if TS, check the 26th bit for GAEP error
+//            tempB_unmasked = tempA_unmasked & 0x01;
+//            if(tempB_unmasked == 1) {
+//                //printf("GAEP ERROR!!!!!!! \n");
+//                //general GAEP warning. No longer printed out
+//            }
+          
+//            // checking for undetected wrap around
+//            if((t & 0x00FFFFFF) < (t_prev & 0x00FFFFFF )) {
+//                //printf("undetected wrap_around %08X %08X > %s %s > %08X \n", t_prev & 0x00FFFFFF, t & 0x00FFFFFF, byte_to_binary(t_prev & 0x00FFFFFF),byte_to_binary(t & 0x00FFFFFF),  (t_prev & 0x00FFFFFF) - (t & 0x00FFFFFF));
+//                countUndetectedWA++;
+//            }
+//            t_prev = t;
+          
+//            //checking for missed addresses
+//            if((countData - lastTSindex != 2) && (lastTSindex != -1) && ( t != 0x80000000)) {
+//                //a = 0xDEADDEAD;
+//                a = 0x0000DEAD;
+//                printf("ERROR TS 1 > %d %d %08X \n", countData, lastTSindex, t);
+//                countErrorsTS++;
+//            }
+//            lastTSindex = countData;
+            
+//            if (save) {
+//                if(printExa) {
+//                    fprintf(fout,"%08X ",t);
+//                }
+//                else {
+//                    fprintf(fout,"%lu,",(long unsigned int)t);
+//                }
+//            }
+
+
+//            //we delay the sending of the timestamp till when we know the
+//            //address event it is associated with
+
+//            if(timestampAvailable)
+//            {
+//                //if a timestamp is already available we have an error!
+//                std::cerr << "Multiple timestamps without addressevent. "
+//                             "This really shouldn't happen but it did, so "
+//                             "perhaps check it out!" << std::endl;
+//            }
+
+//            //Arren isn't sure whether this should be incremented here. I'm not
+//            //sure if it's events sent by the hardware (and received here)
+//            //of if it's events sent by this module (in which case the timestamp
+//            //is delayed and this int might not be sent yet!
+
+//            countEventSent++;
+
+//            associatedTimestamp = tempA;
+//            timestampAvailable = true;
+          
+//            //copying the atomic block to send
+
+//            //directly add timestamp
+//            //buf2[k2++] = t;
+//            //bottle2send->addInt(tempA);
+   
+//        }
+//        // --------------- TIMESTAMP WRAP AROUND ------------
+//        else if(tempA_unmasked == 0x22) {
+//            wrapOccured = true;
+//            // if TS, check the 26th bit for GAEP error
+//            tempB_unmasked = tempA_unmasked & 0x01;
+//            if(tempB_unmasked == 1) {
+//                //printf("GAEP ERROR!!!!!!! \n");
+//                //general error warning no longer printed out
+//            }
+          
+//            tempC_unmasked = (tempA & 0x03000000) >> 24; // buffer overflow
+//            if(tempC_unmasked == 0x01) {
+//                //printf("BUFFER OVERFLOW \n");
+//                countErrorsGAEP1++;
+//            }
+//            //time stamp sequence error
+//            tempC_unmasked = (tempA & 0x03000000) >> 24; // timestamp error
+//            if(tempC_unmasked == 0x02) {
+//                //printf("TIMESTAMP ERROR %08X \n", tempA);
+//                countErrorsGAEP2++;
+//            }
+//            //address event sequence error
+//            tempC_unmasked = (tempA & 0x03000000) >> 24; // address error
+//            if(tempC_unmasked == 0x03) {
+//                //printf("ADDRESS ERROR2 %08X \n", tempA);
+//                countErrorsGAEP3++;
+//            }
+            
+//            /********************************************************/
+//            // wrap-around occured printing out statistics
+
+//            printf("\n \n ===================== WRAP AROUND ===================================== \n");
+//            //a = 0xCAFECAFE;
+//            a = 0x0000CAFE;
+//            t = tempA;
+//            lastTSindex = -1;
+//            lastAEindex = -1;
+//            if((countInWraps > maxCountInWraps) && (!firstWrap)) {
+//                maxCountInWraps = countInWraps;
+//            }
+//            if((countInWraps < minCountInWraps) && (!firstWrap)) {
+//                minCountInWraps = countInWraps;
+//            }
+          
+//            if(firstWrap) {
+//                firstWrap = false;
+//            }
+//            else {
+//                double maxRate = (double)  maxCountInWraps / (0xFFFFFF * 0.001);
+//                double minRate = (double)  minCountInWraps / (0xFFFFFF * 0.001);
+//                double lostRate = (double) countLostAE     / (0xFFFFFF * 0.001);
+//                double dataRate = (double) countInWraps    / (0xFFFFFF * 0.001);
+//                printf("Overall Statistic \n");
+//                printf("================= \n");
+//                printf("max data rate received  %f kAE/s   ; min data rate received %f kAE/s \n", maxRate, minRate);
+//                printf("data rate received %f kAE/s    ;  data rate lost %f kAE/s    ;    LOR %f%% \n", dataRate, lostRate, (double)((lostRate / (lostRate + dataRate)) * 100.0));
+//                printf(" \n Error Resume \n");
+//                printf("============= \n");
+//                printf("type1: %04d     type2: %04d       type3: %04d/%04d \n", countErrorsGAEP1, countErrorsGAEP2, countErrorsGAEP3, countInWraps + countInWrapsTS);
+//                printf("type1: %04f type2: %04f type3: %04f \n", (double)countErrorsGAEP1 / (countInWraps + countInWrapsTS), (double)countErrorsGAEP2 / (countInWraps + countInWrapsTS), (double)countErrorsGAEP3 / (countInWraps + countInWrapsTS));
+//                printf("undetected WrapAdd error %d \n", countUndetectedWA);
+//            }
+//            //**********************************************************/
+//            // reinitialising the statistic
+//            printf("resetting the statistic \n");
+//            countInWraps     = 0;
+//            countInWrapsTS   = 0;
+//            countLostAE      = 0;
+//            countErrorsGAEP1 = 0;
+//            countErrorsGAEP2 = 0;
+//            countErrorsGAEP3 = 0;
+//            t_prev = 0;
+            	    
+//            buf2[k2++] = t; // passing the timestamp to the data flow to send
+//            //buf2[k2++] = a;
+//            countEventSent++;
+            
+//            countData=0; // ADDED RESET TO COUNTDATA
+            
+//            if (save) {
+//                if(printExa) {
+//                    fprintf(fout,"%08X\n",t);
+//                }
+//                else {
+//                    fprintf(fout,"%lu ",(long unsigned int)t);
+//                }
+//                //fprintf(fout," %08X ",0xCAFECAFE);
+//            }
+//        }
+//        // --------------- other events  ------------
+//        else {
+
+//            if (save) {
+//                if(printExa) {
+//                    fprintf(fout,"%08X\n",tempA);
+//                }
+//                else {
+//                    fprintf(fout,"%lu,",(long unsigned int)tempA);
+//                }
+//                //fprintf(fout," %08X ",0xCAFECAFE);
+//            }
+
+//            //TODO: it is possible for the board to send hardware-based
+//            //events other than address events. for example cluster events.
+//            //these events should be accounted for here but currently the
+//            //events are just discared.
+//            //Currently we *shouldn't* get any of these event types
+
+//            std::cout << "Unknown Event (discarded): " << tempA << std::endl;
+            
+//            //copying the atomic block to send
+//            //tempA &= 0x0000FFFF;
+//            //buf2[k2++] = tempA; // passing the timestamp to the data flow to send
+//            //countEventSent++;
+            
+//            //tmpBottle.addInt(tempA); //<----- used in the alternative B
+//            //bottle2send->addInt(tempA);
+        
+//        }
+        	
+//        countData++;
+//        //fprintf(stdout, "count... %d\n", countData) ;
+//    }
+    
+//    //if (save) {
+//    //    fprintf(fout,"------------------------\n");
+//    //}
+    
+//     //*******************************************************************************************************
+
+//    sz = countEventSent * sizeofstructatom;  //sz is size in bytes
+//    char* buf = (char*) buf2;
+    
+//    if (port.getOutputCount()) {
+//        //printf("preparing the data to send on the port \n");
+//        eventBuffer data2send(buffer, sz);  //adding 8 bytes for extra word 0xCAFECAFE and TS_WA
+//        eventBuffer& tmp = port.prepare();
+//        tmp = data2send;
+//        port.write();
+//    }
+    
+//    if (portEventBottle.getOutputCount()) {
+//        //countCycle++;
+//        //printf("bytes %d on the portEventBottle \n", bottle2send->size());
+//        Stamp st;
+//        st.update();
+        
+//        eventBottle data2send(bottle2send);
+//        eventBottle& tmp = portEventBottle.prepare();
+//        tmp = data2send;
+//        portEventBottle.setEnvelope(st);
+
+//        //fprintf(stdout, "TIME ... %lf\n", st.getTime()) ;
+
+//        portEventBottle.write();
+//        //fprintf(stdout, "count... %d\n", countCycle) ;
+    
+//        /*
+//        if (save) {
+//            fprintf(fbottle,"dim %d \n", bottle2send->size());
+//            //printf("dim %d \n", bottle2send->size());
+//            for(int i = 0; i < bottle2send->size(); i++) {
+//                fprintf(fbottle,"%08X \n", bottle2send->get(i).asInt());
+//            }
+//            fprintf(fbottle,"------------------------\n");
+//        }
+//        */
+//    }
+
+//    if (portvBottle.getOutputCount()) {
+//        emorph::vBottle &vb = portvBottle.prepare();
+//        vb.clear();
+
+//        //do some sketchy casting to make things fast at this part of the
+//        //project
+
+//        Bottle * bb = (Bottle *)&vb;
+//        bb->addString("AE");
+
+//        //this doesn't ensure that the data goes TS -> AE -> TS ->
+//        //and that might be a problem
+
+//        //bb->append(*bottle2send);
+//        yarp::os::Bottle &eventlist = bb->addList();
+//        eventlist = *bottle2send;
+
+//        vStamp.update();
+//        portvBottle.setEnvelope(vStamp);
+//        portvBottle.write();
+
+//    }
+        
+//    wrapOccured = false;
+       
+//    if (portDimension.getOutputCount()) {
+//        Bottle& b = portDimension.prepare();
+//        b.clear();
+//        b.addDouble((double)r);
+//        portDimension.write();
+//    }
+    
+//    //resetting buffers
+//    bottle2send->clear();
+//    //printf("resetting the buffer \n");
+//    memset(buffer, 0, SIZE_OF_DATA);
+
+//}
+
 void  device2yarp::run() {
-    bool printExa = true;
 
     r = read(file_desc, pmonatom, monBufSize_b);
-    //printf("received %d bytes \n", r);
-    //r = read(file_desc, &buffer, monBufSize_b);
-    //printf("called read() with monBufSize_b == %d -> retval: %d\n", (int)monBufSize_b, (int)r);
-    
+
     if(r < 0) {
         if (errno == EAGAIN) {
             // everything ok, just no data available at the moment...
@@ -758,369 +1180,44 @@ void  device2yarp::run() {
             return;
         }
     }
-    
-    int sizeofstructaer  = sizeof(struct aer);
+
     int sizeofstructatom = sizeof(struct atom);
 
 
     //*******************************************************************************************************
-    // STATISTICS ON GAEP EVENT FLOW 
+    // STATISTICS ON GAEP EVENT FLOW
 
     // check error of extra byte
-    if (r % sizeofstructatom != 0) {
-        printf("ERROR: read %d bytes from the AEX!!!\n", r);
-    }
+//    if (r % sizeofstructatom != 0) {
+//        printf("ERROR: read %d bytes from the AEX!!!\n", r);
+//    }
+
+
     monBufEvents = r / (sizeofstructatom);
-    countAEs += monBufEvents; 
+    countAEs += monBufEvents;
 
-    int k = 0;
-    int k2 = 0;
-    char*       pBuffer = &buffer[0];
-    uint32_t *     buf2 = (uint32_t*)          pBuffer;
-    unsigned char* buf1 = (unsigned char*)     pmonatom;
-    u32 a, t, c;
-    u32 tempA, tempA_unmasked, tempB, tempB_unmasked;
-    u32 tempC_unmasked;
-    int alow, ahigh;
-    int tlow, thigh;
-    int lastTSindex = -1;
-    int lastAEindex = -1;
-    int countEventSent = 0;
-    int countUndetectedWA = 0;
+    if(monBufEvents < 2) return;
 
-    yarp::os::Bottle tmpBottle;      
-    for (int i = 0; i < monBufEvents ; i++ ) {
-  
-           
-        tempA = pmonatom[i].data;                  
-
-        // dumping the atom as it is
-        /*
-        if(save) {
-            fprintf(fout, "     %08X  \n",tempA);
-        }
-        */
-        
-        // running statistic of the received train of events
-        tempA_unmasked = (tempA & 0xFC000000) >> 26;
-        
-        // ------ CONTROL MESSAGE  ------------
-        if(tempA_unmasked == 0x31) {
-            printf("CONTROL MESSAGE ");
-            tempC_unmasked = tempA & 0x00FFFFFF;
-            printf("  %d address events lost \n", tempC_unmasked);
-            c = tempA;
-            countLostAE += tempC_unmasked;
-            
-            lastTSindex = -1;
-            lastAEindex = -1;
-            
-        }
-        // ---------- ADDRESS EVENT -----------------
-        else if(tempA_unmasked == 0x00 ){
-    
-            a = tempA;
-            
-            if((countData - lastAEindex != 2) && (lastAEindex != -1)) {
-                printf("ERROR AE 1 > %d %d %08X \n",  countData, lastAEindex, a);
-                countErrorsAE++;
-                //a = 0xDEADDEAD;
-            }
-            lastAEindex = countData;
-            countInWraps++;
-            
-            a &= 0x0000FFFF; //removing extra bits which do not match the protocol
-            if(sync)
-            {
-                printf("Add sync bit\n");
-                a+=0x00010000;
-                //fprintf(fout,"**sync**\n");
-                sync=false;
-            }
-
-            if (save) {	  
-                if(printExa) {
-                    fprintf(fout,"%08X \n",a);
-                }
-                else {
-                    fprintf(fout,"%lu,",(long unsigned int)a);
-                }
-            }
-
-            if(!timestampAvailable)
-            {
-                std::cerr << "An addressevent occured without a preceeding "
-                             "timestamp. This really shouldn't happen but it "
-                             "did, so perhaps check it out!" << std::endl;
-                continue;
-            }
-
-            //first put in our associate timestamp (it could be from the last
-            //buffer of events!)
-            buf2[k2++] = associatedTimestamp;
-            bottle2send->addInt(associatedTimestamp);
-            timestampAvailable = false;
-
-            //then put in our address
-
-            buf2[k2++] = a;   // passing the address event to the data flow to send            
-            countEventSent++;
-
-            //tmpBottle.addInt(tempA); //<----- used in the alternative B
-            bottle2send->addInt(tempA);
-
-        }
-        // -------------- TIMESTAMP EVENT ----------------
-        else if (tempA_unmasked == 0x20) {
-            t = tempA;
-            countInWrapsTS++;
-            
-            tempC_unmasked = (tempA & 0x03000000) >> 24; // buffer overflow
-            if(tempC_unmasked == 0x01) {
-                //printf("BUFFER OVERFLOW  \n");
-                countErrorsGAEP1++;
-            }
-            //time stamp sequence error
-            tempC_unmasked = (tempA & 0x03000000) >> 24; // timestamp error
-            if(tempC_unmasked == 0x02) {
-                //printf("TIMESTAMP ERROR %08X \n",tempA);
-                countErrorsGAEP2++;
-            }
-            //address event sequence error
-            tempC_unmasked = (tempA & 0x03000000) >> 24; // address error
-            if(tempC_unmasked == 0x03) {
-                //printf("ADDRESS ERROR %08X \n", tempA);
-                countErrorsGAEP3++;
-            }            
-            
-            // if TS, check the 26th bit for GAEP error
-            tempB_unmasked = tempA_unmasked & 0x01;
-            if(tempB_unmasked == 1) {
-                //printf("GAEP ERROR!!!!!!! \n");
-                //general GAEP warning. No longer printed out
-            }	
-          
-            // checking for undetected wrap around
-            if((t & 0x00FFFFFF) < (t_prev & 0x00FFFFFF )) {
-                //printf("undetected wrap_around %08X %08X > %s %s > %08X \n", t_prev & 0x00FFFFFF, t & 0x00FFFFFF, byte_to_binary(t_prev & 0x00FFFFFF),byte_to_binary(t & 0x00FFFFFF),  (t_prev & 0x00FFFFFF) - (t & 0x00FFFFFF));
-                countUndetectedWA++;
-            }
-            t_prev = t;
-          
-            //checking for missed addresses
-            if((countData - lastTSindex != 2) && (lastTSindex != -1) && ( t != 0x80000000)) {
-                //a = 0xDEADDEAD;
-                a = 0x0000DEAD;
-                printf("ERROR TS 1 > %d %d %08X \n", countData, lastTSindex, t);
-                countErrorsTS++;
-            }
-            lastTSindex = countData;
-            
-            if (save) {	  
-                if(printExa) {
-                    fprintf(fout,"%08X ",t);
-                }
-                else {
-                    fprintf(fout,"%lu,",(long unsigned int)t);
-                }
-            }
-
-
-            //we delay the sending of the timestamp till when we know the
-            //address event it is associated with
-
-            if(timestampAvailable)
-            {
-                //if a timestamp is already available we have an error!
-                std::cerr << "Multiple timestamps without addressevent. "
-                             "This really shouldn't happen but it did, so "
-                             "perhaps check it out!" << std::endl;
-            }
-
-            //Arren isn't sure whether this should be incremented here. I'm not
-            //sure if it's events sent by the hardware (and received here)
-            //of if it's events sent by this module (in which case the timestamp
-            //is delayed and this int might not be sent yet!
-
-            countEventSent++;
-
-            associatedTimestamp = tempA;
-            timestampAvailable = true;
-          
-            //copying the atomic block to send
-
-            //directly add timestamp
-            //buf2[k2++] = t;
-            //bottle2send->addInt(tempA);
-   
-        }
-        // --------------- TIMESTAMP WRAP AROUND ------------
-        else if(tempA_unmasked == 0x22) {
-            wrapOccured = true;
-            // if TS, check the 26th bit for GAEP error  
-            tempB_unmasked = tempA_unmasked & 0x01;
-            if(tempB_unmasked == 1) {
-                //printf("GAEP ERROR!!!!!!! \n");
-                //general error warning no longer printed out
-            }
-          
-            tempC_unmasked = (tempA & 0x03000000) >> 24; // buffer overflow
-            if(tempC_unmasked == 0x01) {
-                //printf("BUFFER OVERFLOW \n");
-                countErrorsGAEP1++;
-            }
-            //time stamp sequence error
-            tempC_unmasked = (tempA & 0x03000000) >> 24; // timestamp error
-            if(tempC_unmasked == 0x02) {
-                //printf("TIMESTAMP ERROR %08X \n", tempA);
-                countErrorsGAEP2++;
-            }
-            //address event sequence error
-            tempC_unmasked = (tempA & 0x03000000) >> 24; // address error
-            if(tempC_unmasked == 0x03) {
-                //printf("ADDRESS ERROR2 %08X \n", tempA);
-                countErrorsGAEP3++;
-            }
-            
-            /********************************************************/
-            // wrap-around occured printing out statistics
-
-            printf("\n \n ===================== WRAP AROUND ===================================== \n");            
-            //a = 0xCAFECAFE;
-            a = 0x0000CAFE;
-            t = tempA;
-            lastTSindex = -1;
-            lastAEindex = -1;
-            if((countInWraps > maxCountInWraps) && (!firstWrap)) {
-                maxCountInWraps = countInWraps;
-            }
-            if((countInWraps < minCountInWraps) && (!firstWrap)) {	    
-                minCountInWraps = countInWraps;
-            }
-          
-            if(firstWrap) {
-                firstWrap = false;
-            }
-            else {
-                double maxRate = (double)  maxCountInWraps / (0xFFFFFF * 0.001);
-                double minRate = (double)  minCountInWraps / (0xFFFFFF * 0.001);
-                double lostRate = (double) countLostAE     / (0xFFFFFF * 0.001);
-                double dataRate = (double) countInWraps    / (0xFFFFFF * 0.001);
-                printf("Overall Statistic \n");
-                printf("================= \n");
-                printf("max data rate received  %f kAE/s   ; min data rate received %f kAE/s \n", maxRate, minRate);
-                printf("data rate received %f kAE/s    ;  data rate lost %f kAE/s    ;    LOR %f%% \n", dataRate, lostRate, (double)((lostRate / (lostRate + dataRate)) * 100.0));
-                printf(" \n Error Resume \n");
-                printf("============= \n");
-                printf("type1: %04d     type2: %04d       type3: %04d/%04d \n", countErrorsGAEP1, countErrorsGAEP2, countErrorsGAEP3, countInWraps + countInWrapsTS);
-                printf("type1: %04f type2: %04f type3: %04f \n", (double)countErrorsGAEP1 / (countInWraps + countInWrapsTS), (double)countErrorsGAEP2 / (countInWraps + countInWrapsTS), (double)countErrorsGAEP3 / (countInWraps + countInWrapsTS));
-                printf("undetected WrapAdd error %d \n", countUndetectedWA);
-            }
-            //**********************************************************/
-            // reinitialising the statistic 
-            printf("resetting the statistic \n");
-            countInWraps     = 0;
-            countInWrapsTS   = 0;
-            countLostAE      = 0;
-            countErrorsGAEP1 = 0;
-            countErrorsGAEP2 = 0;
-            countErrorsGAEP3 = 0;
-            t_prev = 0;
-            	    
-            buf2[k2++] = t; // passing the timestamp to the data flow to send	    
-            //buf2[k2++] = a;
-            countEventSent++;
-            
-            countData=0; // ADDED RESET TO COUNTDATA              
-            
-            if (save) {
-                if(printExa) {
-                    fprintf(fout,"%08X\n",t);
-                }
-                else {
-                    fprintf(fout,"%lu ",(long unsigned int)t);
-                }
-                //fprintf(fout," %08X ",0xCAFECAFE);
-            }	  	  	  
-        }
-        // --------------- other events  ------------
-        else {         
-
-            if (save) {	  
-                if(printExa) {
-                    fprintf(fout,"%08X\n",tempA);
-                }
-                else {
-                    fprintf(fout,"%lu,",(long unsigned int)tempA);
-                }
-                //fprintf(fout," %08X ",0xCAFECAFE);
-            }
-
-            //TODO: it is possible for the board to send hardware-based
-            //events other than address events. for example cluster events.
-            //these events should be accounted for here but currently the
-            //events are just discared.
-            //Currently we *shouldn't* get any of these event types
-
-            std::cout << "Unknown Event (discarded): " << tempA << std::endl;
-            
-            //copying the atomic block to send
-            //tempA &= 0x0000FFFF;
-            //buf2[k2++] = tempA; // passing the timestamp to the data flow to send
-            //countEventSent++;
-            
-            //tmpBottle.addInt(tempA); //<----- used in the alternative B
-            //bottle2send->addInt(tempA);
-        
-        }
-        	
-        countData++;
-        //fprintf(stdout, "count... %d\n", countData) ;
+    if(pmonatom[0].data < 65535 && pmonatom[1].data < 65535) {
+        std::cout << "Please wait until FPGA timestamp is greater than 65535" << std::endl;
+        return;
     }
-    
-    //if (save) {	  
-    //    fprintf(fout,"------------------------\n");
-    //}
-    
-     //*******************************************************************************************************
 
-    sz = countEventSent * sizeofstructatom;  //sz is size in bytes
-    char* buf = (char*) buf2;
-    
-    if (port.getOutputCount()) {
-        //printf("preparing the data to send on the port \n");
-        eventBuffer data2send(buffer, sz);  //adding 8 bytes for extra word 0xCAFECAFE and TS_WA    
-        eventBuffer& tmp = port.prepare();
-        tmp = data2send;
-        port.write();
-    }   
-    
-    if (portEventBottle.getOutputCount()) {       
-        //countCycle++;
-        //printf("bytes %d on the portEventBottle \n", bottle2send->size());
-        Stamp st;
-        st.update();
-        
-        eventBottle data2send(bottle2send);
-        eventBottle& tmp = portEventBottle.prepare();  
-        tmp = data2send;        
-        portEventBottle.setEnvelope(st);
+    int startat = 1;
+    if(pmonatom[0].data < 65535)
+        //the first atom was address data
+        startat = 2;
 
-        //fprintf(stdout, "TIME ... %lf\n", st.getTime()) ;
 
-        portEventBottle.write();      
-        //fprintf(stdout, "count... %d\n", countCycle) ;
-    
-        /*
-        if (save) {    
-            fprintf(fbottle,"dim %d \n", bottle2send->size());
-            //printf("dim %d \n", bottle2send->size());
-            for(int i = 0; i < bottle2send->size(); i++) {
-                fprintf(fbottle,"%08X \n", bottle2send->get(i).asInt());
-            }
-            fprintf(fbottle,"------------------------\n");
-        }
-        */
+    //fill the bottle
+    yarp::os::Bottle databottle;
+    for (int i = startat; i < monBufEvents ; i += 2) {
+
+        int timestamp = pmonatom[i-1].data % 16777216;
+        int AEdata = pmonatom[i].data;
+
+        databottle.add(timestamp);
+        databottle.add(AEdata);
     }
 
     if (portvBottle.getOutputCount()) {
@@ -1138,25 +1235,14 @@ void  device2yarp::run() {
 
         //bb->append(*bottle2send);
         yarp::os::Bottle &eventlist = bb->addList();
-        eventlist = *bottle2send;
+        eventlist = databottle;
 
         vStamp.update();
         portvBottle.setEnvelope(vStamp);
         portvBottle.write();
 
     }
-        
-    wrapOccured = false;
-       
-    if (portDimension.getOutputCount()) {
-        Bottle& b = portDimension.prepare();
-        b.clear();
-        b.addDouble((double)r);
-        portDimension.write();
-    }  
-    
-    //resetting buffers    
-    bottle2send->clear();   
+
     //printf("resetting the buffer \n");
     memset(buffer, 0, SIZE_OF_DATA);
 
