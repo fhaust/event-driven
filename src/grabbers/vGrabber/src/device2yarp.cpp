@@ -1196,29 +1196,43 @@ void  device2yarp::run() {
     monBufEvents = r / (sizeofstructatom);
     countAEs += monBufEvents;
 
-    if(monBufEvents < 2) return;
+    //if(monBufEvents < 2) return;
 
-    if(pmonatom[0].data < 65535 && pmonatom[1].data < 65535) {
-        std::cout << "Please wait until FPGA timestamp is greater than 65535" << std::endl;
-        return;
-    }
+    //if(pmonatom[0].data < 65535 && pmonatom[1].data < 65535) {
+    //    std::cout << "Please wait until FPGA timestamp is greater than 65535" << std::endl;
+    //    return;
+    //}
 
-    int startat = 1;
-    if(pmonatom[0].data < 65535)
-        //the first atom was address data
-        startat = 2;
+    //int startat = 1;
+    //if(pmonatom[0].data < 65535)
+     //   //the first atom was address data
+    //    startat = 2;
 
 
     //fill the bottle
     yarp::os::Bottle databottle;
-    for (int i = startat; i < monBufEvents ; i += 2) {
+    for (int i = 0; i < monBufEvents ; i++) {
 
-        int timestamp = pmonatom[i-1].data % 16777216;
-        int AEdata = pmonatom[i].data;
+        //std::cout << (pmonatom[i].data);
 
-        databottle.add(timestamp);
-        databottle.add(AEdata);
+        if(pmonatom[i].data & 0x80000000) {
+            timestamp = (pmonatom[i].data & 0x7FFFFFFF) % 16777216;
+            //std::cout << " (" << timestamp << ")" << std::endl;
+        } else {
+            //std::cout << " (" << pmonatom[i].data << ")" << std::endl;
+            if(!timestamp) continue;
+            databottle.add((int)timestamp);
+            databottle.add((int)(pmonatom[i].data));
+        }
+
     }
+
+//        int timestamp = pmonatom[i-1].data % 16777216;
+//        int AEdata = pmonatom[i].data;
+
+//        databottle.add(timestamp);
+//        databottle.add(AEdata);
+//    }
 
     if (portvBottle.getOutputCount()) {
         emorph::vBottle &vb = portvBottle.prepare();
