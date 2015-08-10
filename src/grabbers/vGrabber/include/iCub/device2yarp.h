@@ -476,6 +476,7 @@ private:
     short cartX, cartY, polarity;
 
     int previousBottleTS;
+    int nbytesrem;
 
     //this is a temp storage of the timestamp use to prevent fragmentation
     //between address event and timestamp

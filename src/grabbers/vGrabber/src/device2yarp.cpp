@@ -1171,7 +1171,9 @@ void  device2yarp::run() {
 
     //something bad with the monBufSize_b and pmonatom is the size of monBufSize_a,
     //however they are the same size, but will be problematic if they change.
-    r = read(file_desc, pmonatom, monBufSize_b);
+    char * pmonbytes = (char *)pmonatom;
+
+    r = read(file_desc, pmonbytes+nbytesrem, monBufSize_b-nbytesrem);
 
     if(r < 0) {
         if (errno == EAGAIN) {
@@ -1185,41 +1187,75 @@ void  device2yarp::run() {
         }
     }
 
-    if(r % 8) {
-        std::cerr << "We read data which does not align correctly with two uint32s: " << r%8 << std::endl;
+    int nbytesavailable = r + nbytesrem;
+    if(nbytesavailable < 15) {
+        nbytesrem = nbytesavailable;
+        return;
     }
 
+    //we need to ensure the data is aligned to two ints TS and AE
+    //therefore the alignments should be within the first 7 bytes
+    int  * pmonints  = 0;
+    int misalign = 0;
+    for(misalign; misalign < 8; misalign++) {
+        int TS = *(int *)(pmonbytes + misalign);
+        int AE = *(int *)(pmonbytes + misalign + 4);
 
-    monBufEvents = r / (sizeof(struct atom));
-    countAEs += (monBufEvents/2);
+        //if our timestamp starts with a 1 and
+        //if out AE has the first 16 bits as 0's we are aligned
+        if(TS & 0x80000000 && !(AE & 0xFFFF0000)) {
+            pmonints = (int *)(pmonbytes + misalign);
+            break;
+        }
+    }
+
+    if(!pmonints) {
+        std::cerr << "!!Could not find an alignment within the first 8 bytes!!" << std::endl;
+        return;
+    }
+
+    if((char *)pmonints != pmonbytes) {
+        std::cerr << "Found alignment but not at 0, we must have lost some data" << std::endl;
+    }
+
+    //so now we can start reading data from pmonbytes + i
+    //the amount of data read will be (r + nbytesrem - i) / 8
+    //and the amount of data left over will be (r + nbytesrem - i) % 8
+
+    int nEvents = (r + nbytesrem - misalign) / 8;
 
 
+    int bugTS = 0, bugAE = 0;
     int currentBottleTS = 0;
+    int TS, AE;
     //fill the bottle
     yarp::os::Bottle databottle;
-    for (int i = 0; i < monBufEvents ; i++) {
+    for (int i = 0; i < nEvents*2; i+=2) {
 
-        //std::cout << (pmonatom[i].data);
+        TS = pmonints[i];
+        AE = pmonints[i+1];
 
-        if(pmonatom[i].data & 0x80000000) {
-            timestamp = (pmonatom[i].data & 0x7FFFFFFF) % 16777216;
-            if(!currentBottleTS) currentBottleTS = timestamp;
-            //std::cout << " (" << timestamp << ")" << std::endl;
-        } else {
-            //std::cout << " (" << pmonatom[i].data << ")" << std::endl;
-            if(!timestamp) continue;
-            databottle.add((int)timestamp);
-            databottle.add((int)(pmonatom[i].data));
+        if(!(TS & 0x80000000)) {
+            bugTS++;
+            continue;
         }
 
+        if(AE & 0xFFFF0000) {
+            bugAE++;
+            continue;
+        }
+
+        TS = TS & 0x00FFFFFF; //we only want a 24 bit timestamp (and we want to remove the leading 1)
+        if(!currentBottleTS) currentBottleTS = TS;
+
+        databottle.add(TS);
+        databottle.add(AE);
     }
 
-//        int timestamp = pmonatom[i-1].data % 16777216;
-//        int AEdata = pmonatom[i].data;
-
-//        databottle.add(timestamp);
-//        databottle.add(AEdata);
-//    }
+    if(bugTS)
+       std::cerr << "We should have been aligned but " << bugTS << " timestamp(s) were bugged" << std::endl;
+    if(bugAE)
+        std::cerr << "We should have aligned but " << bugAE << " address event(s) were bugged" << std::endl;
 
     if (portvBottle.getOutputCount()) {
         emorph::vBottle &vb = portvBottle.prepare();
@@ -1244,12 +1280,19 @@ void  device2yarp::run() {
 
     }
 
-    if(previousBottleTS) {
+    nbytesrem = (r + nbytesrem - misalign) % 8;
+    //we need to copy data from the end of the data to the start if nbytesrem is > 0
+    if(nbytesrem) {
+        std::cout << "Moving " << nbytesrem << " from the end of the buffer to the start" << std::endl;
+        memcpy(pmonbytes, pmonbytes + (nEvents * 8), nbytesrem);
+    }
+
+    countAEs += nEvents;
+
+    if(previousBottleTS && currentBottleTS - previousBottleTS > 1000) {
         std::cout << "dt: " << currentBottleTS - previousBottleTS << std::endl;
     }
-    previousBottleTS = timestamp;
-    //printf("resetting the buffer \n");
-    memset(buffer, 0, SIZE_OF_DATA);
+    previousBottleTS = TS;
 
 }
 
