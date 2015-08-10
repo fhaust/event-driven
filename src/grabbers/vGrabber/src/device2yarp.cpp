@@ -327,7 +327,9 @@ device2yarp::device2yarp(string portDeviceName, bool i_bool, string i_fileName =
     port.open(str_buf.str().c_str());
     portEventBottle.open("/aexGrabber/eventBottle:o");
     portDimension.open("/aexGrabber/dim:o");
+    //portvBottle.setStrict(true);
     portvBottle.open("/aexGrabber/vBottle:o");
+
 
     // opening the file when the biases are programmed by file
     biasFromBinary = i_bool;
@@ -1167,23 +1169,163 @@ void device2yarp::closeDevice(){
 
 //}
 
+//void  device2yarp::run() {
+
+//    double start_t = yarp::os::Time::now();
+//    //something bad with the monBufSize_b and pmonatom is the size of monBufSize_a,
+//    //however they are the same size, but will be problematic if they change.
+//    char * pmonbytes = (char *)pmonatom;
+
+//    r = read(file_desc, pmonbytes+nbytesrem, monBufSize_a-nbytesrem);
+
+//    if(!r) {
+//        std::cout << "No Bytes to read" << std::endl;
+//        return;
+//    }
+//    if(r < 0) {
+//        if (errno == EAGAIN) {
+//            // everything ok, just no data available at the moment...
+//            // we will be called again in a few miliseconds..
+//            std::cout << "EAGAIN" << std::endl;
+//            return;
+//        } else {
+//            printf("error reading from aerfx2: %d\n", (int)errno);
+//            perror("perror:");
+//            return;
+//        }
+//    }
+
+//    int nbytesavailable = r + nbytesrem;
+//    if(nbytesavailable < 16) {
+//        std::cout << "bytes read: " << r << "(" << monBufSize_a - nbytesrem << ") ";
+//        std::cout << "Waiting till next read to process events due to small amount of events" << std::endl;
+//        nbytesrem = nbytesavailable;
+//        return;
+//    }
+
+//    //we need to ensure the data is aligned to two ints TS and AE
+//    //therefore the alignments should be within the first 7 bytes
+//    int  * pmonints  = 0;
+//    int misalign = 0;
+//    for(misalign; misalign < 8; misalign++) {
+//        int TS = *(int *)(pmonbytes + misalign);
+//        int AE = *(int *)(pmonbytes + misalign + 4);
+
+//        //if our timestamp starts with a 1 and
+//        //if out AE has the first 16 bits as 0's we are aligned
+//        if(TS & 0x80000000 && !(AE & 0xFFFF0000)) {
+//            pmonints = (int *)(pmonbytes + misalign);
+//            break;
+//        }
+//    }
+
+//    if(!pmonints) {
+//        std::cerr << "!!Could not find an alignment within the first 8 bytes!!" << std::endl;
+//        return;
+//    }
+
+//    if((void *)pmonints != (void *)pmonbytes) {
+//        std::cerr << "Found alignment but not at 0, we must have lost some data" << std::endl;
+//    }
+
+//    //so now we can start reading data from pmonbytes + i
+//    //the amount of data read will be (r + nbytesrem - i) / 8
+//    //and the amount of data left over will be (r + nbytesrem - i) % 8
+
+//    int nEvents = (r + nbytesrem - misalign) / 8;
+
+
+//    int bugTS = 0, bugAE = 0;
+//    int currentBottleTS = 0;
+//    int maxintrabottle = 0; int maxintraindex = 0;
+//    int TS, AE;
+//    //fill the bottle
+//    yarp::os::Bottle databottle;
+//    for (int i = 0; i < nEvents*2; i+=2) {
+
+//        TS = pmonints[i];
+//        AE = pmonints[i+1];
+
+//        if(!(TS & 0x80000000)) {
+//            bugTS++;
+//            continue;
+//        }
+
+//        if(AE & 0xFFFF0000) {
+//            bugAE++;
+//            continue;
+//        }
+
+//        TS = TS & 0x00FFFFFF; //we only want a 24 bit timestamp (and we want to remove the leading 1)
+//        if(!currentBottleTS) currentBottleTS = TS;
+//        else {
+//            int intrabottledt = TS - (pmonints[i-2]&0x00FFFFFF);
+//            if(intrabottledt > maxintrabottle) {
+//                maxintrabottle = intrabottledt;
+//                maxintraindex = i * 4;
+//            }
+//        }
+
+//        databottle.add(TS);
+//        databottle.add(AE);
+//    }
+
+//    if(bugTS)
+//       std::cerr << "We should have been aligned but " << bugTS << " timestamp(s) were bugged" << std::endl;
+//    if(bugAE)
+//        std::cerr << "We should have aligned but " << bugAE << " address event(s) were bugged" << std::endl;
+
+//    if (portvBottle.getOutputCount()) {
+//        emorph::vBottle &vb = portvBottle.prepare();
+//        vb.clear();
+
+//        //do some sketchy casting to make things fast at this part of the
+//        //project
+
+//        Bottle * bb = (Bottle *)&vb;
+//        bb->addString("AE");
+
+//        //this doesn't ensure that the data goes TS -> AE -> TS ->
+//        //and that might be a problem
+
+//        //bb->append(*bottle2send);
+//        yarp::os::Bottle &eventlist = bb->addList();
+//        eventlist = databottle;
+
+//        vStamp.update();
+//        portvBottle.setEnvelope(vStamp);
+//        portvBottle.write();
+
+//    }
+
+//    if(previousBottleTS) {
+//        std::cout << "bytes read: " << r << "(" << monBufSize_a - nbytesrem << ") " << "in " << 1000 * (yarp::os::Time::now() - start_t) << "ms ";
+//        std::cout << "dt: " << currentBottleTS - previousBottleTS << " (" << maxintrabottle << " @byte " << maxintraindex << ")" << std::endl;
+//    }
+//    previousBottleTS = TS;
+
+//    nbytesrem = (r + nbytesrem - misalign) % 8;
+//    //we need to copy data from the end of the data to the start if nbytesrem is > 0
+//    if(nbytesrem) {
+//        std::cout << "Moving " << nbytesrem << " from the end of the buffer to the start" << std::endl;
+//        memcpy(pmonbytes, pmonbytes + misalign + (nEvents * 8), nbytesrem);
+//    }
+
+//    countAEs += nEvents;
+
+//}
+
 void  device2yarp::run() {
 
-    //something bad with the monBufSize_b and pmonatom is the size of monBufSize_a,
-    //however they are the same size, but will be problematic if they change.
     char * pmonbytes = (char *)pmonatom;
 
-    r = read(file_desc, pmonbytes+nbytesrem, monBufSize_a-nbytesrem);
+    r = read(file_desc, pmonbytes, monBufSize_a);
 
-    if(!r) {
-        std::cout << "No Bytes to read" << std::endl;
-        return;
-    }
+    if(!r) return;
     if(r < 0) {
         if (errno == EAGAIN) {
             // everything ok, just no data available at the moment...
             // we will be called again in a few miliseconds..
-            std::cout << "EAGAIN" << std::endl;
             return;
         } else {
             printf("error reading from aerfx2: %d\n", (int)errno);
@@ -1192,123 +1334,51 @@ void  device2yarp::run() {
         }
     }
 
-    int nbytesavailable = r + nbytesrem;
-    if(nbytesavailable < 16) {
-        std::cout << "bytes read: " << r << "(" << monBufSize_a - nbytesrem << ") ";
-        std::cout << "Waiting till next read to process events due to small amount of events" << std::endl;
-        nbytesrem = nbytesavailable;
-        return;
-    }
+    emorph::vBottle &vb = portvBottle.prepare();
+    vb.clear();
 
-    //we need to ensure the data is aligned to two ints TS and AE
-    //therefore the alignments should be within the first 7 bytes
-    int  * pmonints  = 0;
-    int misalign = 0;
-    for(misalign; misalign < 8; misalign++) {
-        int TS = *(int *)(pmonbytes + misalign);
-        int AE = *(int *)(pmonbytes + misalign + 4);
+    //do some sketchy casting to make things fast at this part of the
+    //project
+    Bottle * bb = (Bottle *)&vb;
 
-        //if our timestamp starts with a 1 and
-        //if out AE has the first 16 bits as 0's we are aligned
-        if(TS & 0x80000000 && !(AE & 0xFFFF0000)) {
-            pmonints = (int *)(pmonbytes + misalign);
-            break;
+    //now we can add our searchable tag
+    bb->addString("AE");
+    yarp::os::Bottle &eventlist = bb->addList();
+
+
+    int bytesdropped = 0;
+    int i = 0;
+
+    while(i <= r - 8) {
+        int TS = *(int *)(pmonbytes + i);
+        int AE = *(int *)(pmonbytes + i + 4);
+
+        if(!(TS & 0x80000000) || (AE & 0xFFFF0000)) {
+            //misalignment, move on by 1 byte
+            bytesdropped++;
+            i += 1;
+        } else {
+            //successful data match move on by 8 bytes
+            if(!eventlist.size())
+                std::cout << "1 " << (int)(TS & 0x00FFFFFF) << std::endl;
+            else
+                std::cout << "0 " << (int)(TS & 0x00FFFFFF) << std::endl;
+
+            eventlist.add((int)(TS & 0x80FFFFFF));
+            eventlist.add(AE);
+            i += 8;
         }
     }
+    bytesdropped += r - i;
 
-    if(!pmonints) {
-        std::cerr << "!!Could not find an alignment within the first 8 bytes!!" << std::endl;
-        return;
-    }
+    //if(bytesdropped)
+    //    std::cerr << "Lost " << bytesdropped << " bytes" << std::endl;
 
-    if((void *)pmonints != (void *)pmonbytes) {
-        std::cerr << "Found alignment but not at 0, we must have lost some data" << std::endl;
-    }
+    countAEs += eventlist.size();
 
-    //so now we can start reading data from pmonbytes + i
-    //the amount of data read will be (r + nbytesrem - i) / 8
-    //and the amount of data left over will be (r + nbytesrem - i) % 8
-
-    int nEvents = (r + nbytesrem - misalign) / 8;
-
-
-    int bugTS = 0, bugAE = 0;
-    int currentBottleTS = 0;
-    int maxintrabottle = 0; int maxintraindex = 0;
-    int TS, AE;
-    //fill the bottle
-    yarp::os::Bottle databottle;
-    for (int i = 0; i < nEvents*2; i+=2) {
-
-        TS = pmonints[i];
-        AE = pmonints[i+1];
-
-        if(!(TS & 0x80000000)) {
-            bugTS++;
-            continue;
-        }
-
-        if(AE & 0xFFFF0000) {
-            bugAE++;
-            continue;
-        }
-
-        TS = TS & 0x00FFFFFF; //we only want a 24 bit timestamp (and we want to remove the leading 1)
-        if(!currentBottleTS) currentBottleTS = TS;
-        else {
-            int intrabottledt = TS - (pmonints[i-2]&0x00FFFFFF);
-            if(intrabottledt > maxintrabottle) {
-                maxintrabottle = intrabottledt;
-                maxintraindex = i * 4;
-            }
-        }
-
-        databottle.add(TS);
-        databottle.add(AE);
-    }
-
-    if(bugTS)
-       std::cerr << "We should have been aligned but " << bugTS << " timestamp(s) were bugged" << std::endl;
-    if(bugAE)
-        std::cerr << "We should have aligned but " << bugAE << " address event(s) were bugged" << std::endl;
-
-    if (portvBottle.getOutputCount()) {
-        emorph::vBottle &vb = portvBottle.prepare();
-        vb.clear();
-
-        //do some sketchy casting to make things fast at this part of the
-        //project
-
-        Bottle * bb = (Bottle *)&vb;
-        bb->addString("AE");
-
-        //this doesn't ensure that the data goes TS -> AE -> TS ->
-        //and that might be a problem
-
-        //bb->append(*bottle2send);
-        yarp::os::Bottle &eventlist = bb->addList();
-        eventlist = databottle;
-
-        vStamp.update();
-        portvBottle.setEnvelope(vStamp);
-        portvBottle.write();
-
-    }
-
-    if(previousBottleTS) {
-        std::cout << "bytes read: " << r << "(" << monBufSize_a - nbytesrem << ") ";
-        std::cout << "dt: " << currentBottleTS - previousBottleTS << " (" << maxintrabottle << " @byte " << maxintraindex << ")" << std::endl;
-    }
-    previousBottleTS = TS;
-
-    nbytesrem = (r + nbytesrem - misalign) % 8;
-    //we need to copy data from the end of the data to the start if nbytesrem is > 0
-    if(nbytesrem) {
-        std::cout << "Moving " << nbytesrem << " from the end of the buffer to the start" << std::endl;
-        memcpy(pmonbytes, pmonbytes + misalign + (nEvents * 8), nbytesrem);
-    }
-
-    countAEs += nEvents;
+    vStamp.update();
+    portvBottle.setEnvelope(vStamp);
+    portvBottle.write();
 
 }
 
