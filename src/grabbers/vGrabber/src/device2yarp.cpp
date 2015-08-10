@@ -123,6 +123,8 @@ device2yarp::device2yarp(string portDeviceName, bool i_bool, string i_fileName =
 
     associatedTimestamp = 0;
     timestampAvailable = false;
+    previousBottleTS = 0;
+    nbytesrem = 0;
     
     
     /*   ORIGINAL VALUES
@@ -1167,6 +1169,8 @@ void device2yarp::closeDevice(){
 
 void  device2yarp::run() {
 
+    //something bad with the monBufSize_b and pmonatom is the size of monBufSize_a,
+    //however they are the same size, but will be problematic if they change.
     r = read(file_desc, pmonatom, monBufSize_b);
 
     if(r < 0) {
@@ -1181,34 +1185,16 @@ void  device2yarp::run() {
         }
     }
 
-    int sizeofstructatom = sizeof(struct atom);
+    if(r % 8) {
+        std::cerr << "We read data which does not align correctly with two uint32s: " << r%8 << std::endl;
+    }
 
 
-    //*******************************************************************************************************
-    // STATISTICS ON GAEP EVENT FLOW
-
-    // check error of extra byte
-//    if (r % sizeofstructatom != 0) {
-//        printf("ERROR: read %d bytes from the AEX!!!\n", r);
-//    }
+    monBufEvents = r / (sizeof(struct atom));
+    countAEs += (monBufEvents/2);
 
 
-    monBufEvents = r / (sizeofstructatom);
-    countAEs += monBufEvents;
-
-    //if(monBufEvents < 2) return;
-
-    //if(pmonatom[0].data < 65535 && pmonatom[1].data < 65535) {
-    //    std::cout << "Please wait until FPGA timestamp is greater than 65535" << std::endl;
-    //    return;
-    //}
-
-    //int startat = 1;
-    //if(pmonatom[0].data < 65535)
-     //   //the first atom was address data
-    //    startat = 2;
-
-
+    int currentBottleTS = 0;
     //fill the bottle
     yarp::os::Bottle databottle;
     for (int i = 0; i < monBufEvents ; i++) {
@@ -1217,6 +1203,7 @@ void  device2yarp::run() {
 
         if(pmonatom[i].data & 0x80000000) {
             timestamp = (pmonatom[i].data & 0x7FFFFFFF) % 16777216;
+            if(!currentBottleTS) currentBottleTS = timestamp;
             //std::cout << " (" << timestamp << ")" << std::endl;
         } else {
             //std::cout << " (" << pmonatom[i].data << ")" << std::endl;
@@ -1257,6 +1244,10 @@ void  device2yarp::run() {
 
     }
 
+    if(previousBottleTS) {
+        std::cout << "dt: " << currentBottleTS - previousBottleTS << std::endl;
+    }
+    previousBottleTS = timestamp;
     //printf("resetting the buffer \n");
     memset(buffer, 0, SIZE_OF_DATA);
 

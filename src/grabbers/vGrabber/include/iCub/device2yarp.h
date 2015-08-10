@@ -475,6 +475,8 @@ private:
     unsigned int timestamp;
     short cartX, cartY, polarity;
 
+    int previousBottleTS;
+
     //this is a temp storage of the timestamp use to prevent fragmentation
     //between address event and timestamp
     int associatedTimestamp;
