@@ -1173,12 +1173,17 @@ void  device2yarp::run() {
     //however they are the same size, but will be problematic if they change.
     char * pmonbytes = (char *)pmonatom;
 
-    r = read(file_desc, pmonbytes+nbytesrem, monBufSize_b-nbytesrem);
+    r = read(file_desc, pmonbytes+nbytesrem, monBufSize_a-nbytesrem);
 
+    if(!r) {
+        std::cout << "No Bytes to read" << std::endl;
+        return;
+    }
     if(r < 0) {
         if (errno == EAGAIN) {
             // everything ok, just no data available at the moment...
             // we will be called again in a few miliseconds..
+            std::cout << "EAGAIN" << std::endl;
             return;
         } else {
             printf("error reading from aerfx2: %d\n", (int)errno);
@@ -1188,7 +1193,9 @@ void  device2yarp::run() {
     }
 
     int nbytesavailable = r + nbytesrem;
-    if(nbytesavailable < 15) {
+    if(nbytesavailable < 16) {
+        std::cout << "bytes read: " << r << "(" << monBufSize_a - nbytesrem << ") ";
+        std::cout << "Waiting till next read to process events due to small amount of events" << std::endl;
         nbytesrem = nbytesavailable;
         return;
     }
@@ -1214,7 +1221,7 @@ void  device2yarp::run() {
         return;
     }
 
-    if((char *)pmonints != pmonbytes) {
+    if((void *)pmonints != (void *)pmonbytes) {
         std::cerr << "Found alignment but not at 0, we must have lost some data" << std::endl;
     }
 
@@ -1227,6 +1234,7 @@ void  device2yarp::run() {
 
     int bugTS = 0, bugAE = 0;
     int currentBottleTS = 0;
+    int maxintrabottle = 0; int maxintraindex = 0;
     int TS, AE;
     //fill the bottle
     yarp::os::Bottle databottle;
@@ -1247,6 +1255,13 @@ void  device2yarp::run() {
 
         TS = TS & 0x00FFFFFF; //we only want a 24 bit timestamp (and we want to remove the leading 1)
         if(!currentBottleTS) currentBottleTS = TS;
+        else {
+            int intrabottledt = TS - (pmonints[i-2]&0x00FFFFFF);
+            if(intrabottledt > maxintrabottle) {
+                maxintrabottle = intrabottledt;
+                maxintraindex = i * 4;
+            }
+        }
 
         databottle.add(TS);
         databottle.add(AE);
@@ -1280,19 +1295,20 @@ void  device2yarp::run() {
 
     }
 
+    if(previousBottleTS) {
+        std::cout << "bytes read: " << r << "(" << monBufSize_a - nbytesrem << ") ";
+        std::cout << "dt: " << currentBottleTS - previousBottleTS << " (" << maxintrabottle << " @byte " << maxintraindex << ")" << std::endl;
+    }
+    previousBottleTS = TS;
+
     nbytesrem = (r + nbytesrem - misalign) % 8;
     //we need to copy data from the end of the data to the start if nbytesrem is > 0
     if(nbytesrem) {
         std::cout << "Moving " << nbytesrem << " from the end of the buffer to the start" << std::endl;
-        memcpy(pmonbytes, pmonbytes + (nEvents * 8), nbytesrem);
+        memcpy(pmonbytes, pmonbytes + misalign + (nEvents * 8), nbytesrem);
     }
 
     countAEs += nEvents;
-
-    if(previousBottleTS && currentBottleTS - previousBottleTS > 1000) {
-        std::cout << "dt: " << currentBottleTS - previousBottleTS << std::endl;
-    }
-    previousBottleTS = TS;
 
 }
 
