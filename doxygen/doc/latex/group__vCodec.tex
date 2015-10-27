@@ -1,0 +1,65 @@
+\hypertarget{group__vCodec}{\section{v\-Codec}
+\label{group__vCodec}\index{v\-Codec@{v\-Codec}}
+}
+
+
+class hierarchy for different types of \hyperlink{classemorph_1_1vEvent}{emorph\-::v\-Event}  
+
+
+class hierarchy for different types of \hyperlink{classemorph_1_1vEvent}{emorph\-::v\-Event} \subsection*{Event Coding }
+
+Events are serialised and coded in a standardised format for sending and receiving between modules. In addition a packet containing multiple different types of events is segmented by event-\/type such that a search can quickly retrieve events of only a specific type. The packet is formed as such\-: \begin{DoxyVerb}EVENTTYPE-1-TAG ( serialised and concatinated events of type 1) EVENTTYPE-2-TAG ( serialised and concatinated events of type 2) ...
+\end{DoxyVerb}
+
+
+Each event class defines the T\-A\-G used to identify itself and also the method with which the event data is serialised. Managing the serialisation and de-\/serialisation of the event data is then simply a case of using the event class to write/read its T\-A\-G and then call its encode/decode functions on the serialised data. The \hyperlink{classemorph_1_1vBottle}{emorph\-::v\-Bottle} class handles the coding of packets in the event-\/driven project.
+
+Events are defined in a class hierarchy, with each child class calling its parent encode/decode function before its own. Adding a new event therefore only requires defining the serialisation method for any new data that the event-\/class contains (e.\-g. the Flow event only defines how the velocities are encoded and calls its parent class, the Adress\-Event, to encode other information, such as position and timestamp).
+
+ \subsubsection*{Event Coding Definitions }
+
+The {\bfseries v\-Event} uses 4 bytes to encode a timestamp ({\itshape T}) \begin{DoxyVerb}[10000000 TTTTTTT TTTTTTTT TTTTTTTT]
+\end{DoxyVerb}
+
+
+An {\bfseries Address\-Event} uses 4 bytes to encode position ({\itshape X}, {\itshape Y}), polarity ({\itshape P}) and channel ({\itshape C}). Importantly as Address\-Event is of type v\-Event the timestamp information of this event is always encoded as well. \begin{DoxyVerb}[00000000 00000000 CYYYYYYY XXXXXXXP]
+\end{DoxyVerb}
+
+
+A {\bfseries Flow\-Event} uses 8 bytes to encode velocity (ẋ, ẏ), each 4 bytes represent a {\itshape float}. Similarly as Flow\-Event is of time Address\-Event the Flow\-Event also encodes all the position and timestamp information above. \begin{DoxyVerb}[ẋẋẋẋẋẋẋẋ ẋẋẋẋẋẋẋẋ ẏẏẏẏẏẏẏẏ ẏẏẏẏẏẏẏẏ]
+\end{DoxyVerb}
+
+
+An {\bfseries Address\-Event\-Clustered} is labelled as belonging to a group I\-D ({\itshape I}) using a 4 byte {\itshape int}. \begin{DoxyVerb}[IIIIIIIII IIIIIIIII IIIIIIIII IIIIIIIII]
+\end{DoxyVerb}
+
+
+A {\bfseries Cluster\-Event} is encodes the central position ({\itshape X}, {\itshape Y}) of a labelled cluster ({\itshape I}) and also has a polarity ({\itshape P}) and channel ({\itshape C}) \begin{DoxyVerb}[IIIIIIII IIIIIIII CYYYYYYY XXXXXXXP]
+\end{DoxyVerb}
+
+
+{\itshape N\-O\-T\-E\-: Cluster Event and Address\-Event\-Clustered could be consolidated in some way}
+
+A {\bfseries Cluster\-Event\-Gauss} extends a cluster event with a 2 dimensional Gaussian distribution parameterised by ({\itshape sx}, {\itshape sy}, {\itshape sxy}) a count of events falling in this distribution ({\itshape n}) and its velocity (ẋ, ẏ) using a total of 12 bytes. \begin{DoxyVerb}[sxysxysxysxysxysxysxysxy sxysxysxysxysxysxysxysxy nnnnnnnn nnnnnnnn
+ sxsxsxsxsxsxsxsx sxsxsxsxsxsxsxsx sysysysysysysysy sysysysysysysysy
+ ẋẋẋẋẋẋẋẋ ẋẋẋẋẋẋẋẋ ẏẏẏẏẏẏẏẏ ẏẏẏẏẏẏẏẏ]
+\end{DoxyVerb}
+
+
+A {\bfseries Collision\-Event} uses 1 byte to encode collision position ({\itshape X}, {\itshape Y}), the channel ({\itshape C}) and the two cluster I\-Ds that collided ({\itshape I1}, {\itshape I2}) \begin{DoxyVerb}[I1I1I1I1I1I1I1I1 I2I2I2I2I2I2I2I2 CXXXXXXX 0YYYYYYY]
+\end{DoxyVerb}
+
+
+\subsubsection*{Coding in Y\-A\-R\-P }
+
+The \hyperlink{classemorph_1_1vBottle}{emorph\-::v\-Bottle} class wraps the encoding and decoding operations into a yarp\-::os\-::\-Bottle such that an example v\-Bottle will appear as\-: \begin{DoxyVerb}AE (-2140812352 15133 -2140811609 13118) FLOW (-2140812301 13865 -1056003417 -1055801578)
+\end{DoxyVerb}
+
+
+{\itshape N\-O\-T\-E\-: The actual data sent by Y\-A\-R\-P for a bottle includes signifiers for data type and data length, adding extra data to the bottle as above.} \begin{DoxyVerb}256 4 4 2 'A' 'E' 257 4 -2140812352 15133 -2140811609 13118 4 4 'F' 'L' 'O' 'W' 257 4 -2140812301 13865 -1056003417 -1055801578
+\end{DoxyVerb}
+
+
+\subsubsection*{Coding in R\-O\-S }
+
+Here explain how the coding would/will be performed for R\-O\-S. How does the Y\-A\-R\-P/\-R\-O\-S interface consolidate the above two formats. 

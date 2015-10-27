@@ -1,0 +1,85 @@
+\hypertarget{classvsctrlDevManager}{\section{vsctrl\-Dev\-Manager Class Reference}
+\label{classvsctrlDevManager}\index{vsctrl\-Dev\-Manager@{vsctrl\-Dev\-Manager}}
+}
+Inheritance diagram for vsctrl\-Dev\-Manager\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classvsctrlDevManager}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classvsctrlDevManager_a089d585fca4be21726d0708977abc7e4}{void {\bfseries print\-Biases} ()}\label{classvsctrlDevManager_a089d585fca4be21726d0708977abc7e4}
+
+\item 
+\hypertarget{classvsctrlDevManager_a4942068d2a90273bf333b9c5bd4bca1c}{unsigned int {\bfseries get\-Bias} (std\-::string bias\-Name)}\label{classvsctrlDevManager_a4942068d2a90273bf333b9c5bd4bca1c}
+
+\item 
+\hypertarget{classvsctrlDevManager_aee610b6b7e574e4763b15e1993e9ef4b}{virtual bool {\bfseries open\-Device} ()}\label{classvsctrlDevManager_aee610b6b7e574e4763b15e1993e9ef4b}
+
+\item 
+\hypertarget{classvsctrlDevManager_a5ca1d208ff16147546fd918af0a18cda}{virtual void {\bfseries close\-Device} ()}\label{classvsctrlDevManager_a5ca1d208ff16147546fd918af0a18cda}
+
+\item 
+\hypertarget{classvsctrlDevManager_ab54ace30b1bd3398fc951e82745f38aa}{{\bfseries vsctrl\-Dev\-Manager} (std\-::string channel, std\-::string chip)}\label{classvsctrlDevManager_ab54ace30b1bd3398fc951e82745f38aa}
+
+\item 
+\hypertarget{classvsctrlDevManager_a9db8592ea35fc47134c0a7d3e261462d}{int {\bfseries chip\-Reset} ()}\label{classvsctrlDevManager_a9db8592ea35fc47134c0a7d3e261462d}
+
+\item 
+\hypertarget{classvsctrlDevManager_aaffe2de0b0b855eaf69aa8d26ca8adfb}{int {\bfseries chip\-Power\-Down} ()}\label{classvsctrlDevManager_aaffe2de0b0b855eaf69aa8d26ca8adfb}
+
+\item 
+\hypertarget{classvsctrlDevManager_a26ee4e76e8691abcf9bf01fb1943aa5e}{int {\bfseries chip\-Power\-Up} ()}\label{classvsctrlDevManager_a26ee4e76e8691abcf9bf01fb1943aa5e}
+
+\item 
+\hypertarget{classvsctrlDevManager_aa9d0e1ebe2852643821a903769c72a88}{int {\bfseries get\-Fpga\-Status} ()}\label{classvsctrlDevManager_aa9d0e1ebe2852643821a903769c72a88}
+
+\item 
+\hypertarget{classvsctrlDevManager_a34310dcff72b9c9f4f2a80fb7ab25a0a}{int {\bfseries clear\-Fpga\-Status} (std\-::string clr)}\label{classvsctrlDevManager_a34310dcff72b9c9f4f2a80fb7ab25a0a}
+
+\item 
+\hypertarget{classvsctrlDevManager_a55353e0f83e3b3020ea151ddd8e7f14f}{int {\bfseries get\-Fpga\-Rel} ()}\label{classvsctrlDevManager_a55353e0f83e3b3020ea151ddd8e7f14f}
+
+\item 
+\hypertarget{classvsctrlDevManager_a1718274a8e09640d01a6e1c30b81dea3}{int {\bfseries get\-Fpga\-Info} ()}\label{classvsctrlDevManager_a1718274a8e09640d01a6e1c30b81dea3}
+
+\item 
+\hypertarget{classvsctrlDevManager_a09e8586d71ef063d025a37a1a6977310}{int {\bfseries write\-Aer\-Timings} (uint8\-\_\-t ack\-\_\-rel, uint8\-\_\-t sample, uint8\-\_\-t ack\-\_\-set)}\label{classvsctrlDevManager_a09e8586d71ef063d025a37a1a6977310}
+
+\item 
+\hypertarget{classvsctrlDevManager_aed1443c969692cd042d87997a59a2479}{int {\bfseries write\-Bg\-Timings} (uint8\-\_\-t prescaler, uint8\-\_\-t hold, uint8\-\_\-t ck\-\_\-active, uint8\-\_\-t latch\-\_\-setup, uint8\-\_\-t latch\-\_\-active)}\label{classvsctrlDevManager_aed1443c969692cd042d87997a59a2479}
+
+\item 
+\hypertarget{classvsctrlDevManager_a821576ea67f67432d584c19abd20005c}{int {\bfseries get\-Bg\-Timings} ()}\label{classvsctrlDevManager_a821576ea67f67432d584c19abd20005c}
+
+\item 
+\hypertarget{classvsctrlDevManager_aa898c4407bfe7e1f53ea04c45ca2ebd5}{int {\bfseries get\-Aer\-Timings} ()}\label{classvsctrlDevManager_aa898c4407bfe7e1f53ea04c45ca2ebd5}
+
+\item 
+\hypertarget{classvsctrlDevManager_a3c77d4aec1d1a05c4295a97372af4149}{int {\bfseries init\-Device} ()}\label{classvsctrlDevManager_a3c77d4aec1d1a05c4295a97372af4149}
+
+\item 
+\hypertarget{classvsctrlDevManager_aef5104292baec220c7a70ffdc7e2c016}{int {\bfseries write\-G\-P\-O\-Register} (uint32\-\_\-t data)}\label{classvsctrlDevManager_aef5104292baec220c7a70ffdc7e2c016}
+
+\item 
+\hypertarget{classvsctrlDevManager_a9e71984e46f46b72e43e08329cdbca94}{int {\bfseries read\-G\-P\-O\-Register} ()}\label{classvsctrlDevManager_a9e71984e46f46b72e43e08329cdbca94}
+
+\item 
+\hypertarget{classvsctrlDevManager_a559222224b7f13e14f0a80ba327bbb27}{bool {\bfseries program\-Biases} ()}\label{classvsctrlDevManager_a559222224b7f13e14f0a80ba327bbb27}
+
+\item 
+\hypertarget{classvsctrlDevManager_a086729caaeb04be43699fe5292c44e25}{bool {\bfseries set\-Bias} (std\-::string bias\-Name, unsigned int bias\-Value)}\label{classvsctrlDevManager_a086729caaeb04be43699fe5292c44e25}
+
+\item 
+\hypertarget{classvsctrlDevManager_a558be9af52147baee357e9c1a28b2268}{bool {\bfseries set\-Bias} (yarp\-::os\-::\-Bottle bias)}\label{classvsctrlDevManager_a558be9af52147baee357e9c1a28b2268}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/aglover/workspace/projects/event\-Driven/src/grabbers/zynq\-Grabber/include/i\-Cub/device\-Manager.\-h\item 
+/home/aglover/workspace/projects/event\-Driven/src/grabbers/zynq\-Grabber/src/device\-Manager.\-cpp\end{DoxyCompactItemize}

@@ -1,0 +1,130 @@
+\hypertarget{namespaceemorph}{\section{emorph Namespace Reference}
+\label{namespaceemorph}\index{emorph@{emorph}}
+}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classemorph_1_1activityMat}{activity\-Mat}
+\item 
+class \hyperlink{classemorph_1_1vBottle}{v\-Bottle}
+\item 
+class \hyperlink{classemorph_1_1vBottleMimic}{v\-Bottle\-Mimic}
+\item 
+class \hyperlink{classemorph_1_1vEvent}{v\-Event}
+\item 
+class \hyperlink{classemorph_1_1AddressEvent}{Address\-Event}
+\item 
+class \hyperlink{classemorph_1_1AddressEventClustered}{Address\-Event\-Clustered}
+\item 
+class \hyperlink{classemorph_1_1CollisionEvent}{Collision\-Event}
+\item 
+class \hyperlink{classemorph_1_1ClusterEvent}{Cluster\-Event}
+\item 
+class \hyperlink{classemorph_1_1ClusterEventGauss}{Cluster\-Event\-Gauss}
+\item 
+class \hyperlink{classemorph_1_1FlowEvent}{Flow\-Event}
+\item 
+class \hyperlink{classemorph_1_1vQueue}{v\-Queue}
+\item 
+class \hyperlink{classemorph_1_1vSurface}{v\-Surface}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{classemorph_1_1vWindow}{v\-Window} class holds a list of events for a period of time as specified. Event expiry is checked each time new events are added and expired events are removed. At any point in time a copy of the current list of events can be requested. \end{DoxyCompactList}\item 
+class \hyperlink{classemorph_1_1vtsHelper}{vts\-Helper}
+\item 
+class \hyperlink{classemorph_1_1vWindow}{v\-Window}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{classemorph_1_1vWindow}{v\-Window} class holds a list of events for a period of time as specified. Event expiry is checked each time new events are added and expired events are removed. At any point in time a copy of the current list of events can be requested. \end{DoxyCompactList}\item 
+class \hyperlink{classemorph_1_1eventProcessor}{event\-Processor}
+\item 
+class \hyperlink{classemorph_1_1vDraw}{v\-Draw}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{classemorph_1_1vDraw}{v\-Draw} class is the base class from which all v\-Drawers should inherit. It contains the draw and get\-Tag functions which must be overloaded, and the sensor size for reference. \end{DoxyCompactList}\item 
+class \hyperlink{classemorph_1_1addressDraw}{address\-Draw}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{classemorph_1_1addressDraw}{address\-Draw} class is the standard instance of a v\-Drawer that draws simple address events. The \hyperlink{classemorph_1_1addressDraw}{address\-Draw} will completely overwrite any images previously drawn beforehand and thus should always be first in the argument list. \end{DoxyCompactList}\item 
+class \hyperlink{classemorph_1_1lifeDraw}{life\-Draw}
+\item 
+class \hyperlink{classemorph_1_1integralDraw}{integral\-Draw}
+\item 
+class \hyperlink{classemorph_1_1flowDraw}{flow\-Draw}
+\item 
+class \hyperlink{classemorph_1_1clusterDraw}{cluster\-Draw}
+\begin{DoxyCompactList}\small\item\em The cluster\-Drawer overlays the image with visualisation of event clusters. \end{DoxyCompactList}\item 
+class \hyperlink{classemorph_1_1blobDraw}{blob\-Draw}
+\item 
+class \hyperlink{classemorph_1_1circleDraw}{circle\-Draw}
+\item 
+class \hyperlink{classemorph_1_1surfDraw}{surf\-Draw}
+\item 
+class \hyperlink{classemorph_1_1fixedDraw}{fixed\-Draw}
+\item 
+class \hyperlink{classemorph_1_1fflowDraw}{fflow\-Draw}
+\item 
+class \hyperlink{classemorph_1_1vReadAndSplit}{v\-Read\-And\-Split}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{classemorph_1_1vReadAndSplit}{v\-Read\-And\-Split} class splits events into different v\-Windows based on the channel parameter. At any point in time a snapshot of all windows can be performed, after which the resulting v\-Queues can be accessed. \end{DoxyCompactList}\item 
+class \hyperlink{classemorph_1_1vFramerModule}{v\-Framer\-Module}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{classemorph_1_1vFramerModule}{v\-Framer\-Module} class runs the event reading and channel splitting, the drawing modules, and the yarp image output buffers. Images are created at a rate equal to the rate of this thread. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{namespaceemorph_a054d7f95bb736869a8fd935a5fa4dc86}{\hyperlink{classemorph_1_1vEvent}{v\-Event} $\ast$ {\bfseries create\-Event} (const std\-::string type)}\label{namespaceemorph_a054d7f95bb736869a8fd935a5fa4dc86}
+
+\item 
+\hyperlink{classemorph_1_1vDraw}{v\-Draw} $\ast$ \hyperlink{namespaceemorph_ae969d2a4bd07eef9230b24c49865f5d4}{create\-Drawer} (std\-::string tag)
+\begin{DoxyCompactList}\small\item\em create\-Drawer returns an instance of a drawer that matches the tag specified \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classemorph_1_1vBottle}{v\-Bottle}
+
+yarp\-::os\-::\-Bottle wrapper for sending events through the yarp system with particular attention to using data dumper and data players
+
+\begin{DoxyAuthor}{Author}
+Arren Glover
+\end{DoxyAuthor}
+\hyperlink{classemorph_1_1vQueue}{v\-Queue}
+
+A wrapper for a dequeue of event pointers with functionality for memory management of events
+
+\begin{DoxyAuthor}{Author}
+Arren Glover
+\end{DoxyAuthor}
+\hyperlink{classemorph_1_1vSurface}{v\-Surface}
+
+A data representation which stores only the most recent event at each pixel location
+
+\begin{DoxyAuthor}{Author}
+Arren Glover
+\end{DoxyAuthor}
+\hyperlink{classemorph_1_1vtsHelper}{vts\-Helper}
+
+a helper class for unwrapping timestamps into long ints when overflow occurs
+
+\begin{DoxyAuthor}{Author}
+Valentina Vasco
+\end{DoxyAuthor}
+\hyperlink{classemorph_1_1vWindow}{v\-Window}
+
+A storage class which automatically discards events after a given timeperiod
+
+\begin{DoxyAuthor}{Author}
+Arren Glover 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\hypertarget{namespaceemorph_ae969d2a4bd07eef9230b24c49865f5d4}{\index{emorph@{emorph}!create\-Drawer@{create\-Drawer}}
+\index{create\-Drawer@{create\-Drawer}!emorph@{emorph}}
+\subsubsection[{create\-Drawer}]{\setlength{\rightskip}{0pt plus 5cm}{\bf v\-Draw} $\ast$ emorph\-::create\-Drawer (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{tag}
+\end{DoxyParamCaption}
+)}}\label{namespaceemorph_ae969d2a4bd07eef9230b24c49865f5d4}
+
+
+create\-Drawer returns an instance of a drawer that matches the tag specified 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tag} & is the code of the drawer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to a drawer on success. 0 if no appropiate drawer was found 
+\end{DoxyReturn}

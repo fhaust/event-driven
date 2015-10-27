@@ -1,0 +1,99 @@
+\hypertarget{classemorph_1_1vReadAndSplit}{\section{emorph\-:\-:v\-Read\-And\-Split Class Reference}
+\label{classemorph_1_1vReadAndSplit}\index{emorph\-::v\-Read\-And\-Split@{emorph\-::v\-Read\-And\-Split}}
+}
+
+
+The \hyperlink{classemorph_1_1vReadAndSplit}{v\-Read\-And\-Split} class splits events into different v\-Windows based on the channel parameter. At any point in time a snapshot of all windows can be performed, after which the resulting v\-Queues can be accessed.  
+
+
+
+
+{\ttfamily \#include $<$v\-Framer.\-h$>$}
+
+Inheritance diagram for emorph\-:\-:v\-Read\-And\-Split\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classemorph_1_1vReadAndSplit}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classemorph_1_1vReadAndSplit_a58ed7a0a18a7c11a5d997c8deec0bd3d}{\hyperlink{classemorph_1_1vReadAndSplit_a58ed7a0a18a7c11a5d997c8deec0bd3d}{v\-Read\-And\-Split} ()}\label{classemorph_1_1vReadAndSplit_a58ed7a0a18a7c11a5d997c8deec0bd3d}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classemorph_1_1vReadAndSplit}{v\-Read\-And\-Split} constructor with default windowsize parameter \end{DoxyCompactList}\item 
+void \hyperlink{classemorph_1_1vReadAndSplit_ab59e77834ba842a6508b174c48b5cda2}{set\-Window\-Size} (int windowsize)
+\begin{DoxyCompactList}\small\item\em set\-Window\-Size sets the length of time events are stored \end{DoxyCompactList}\item 
+\hypertarget{classemorph_1_1vReadAndSplit_a39e2a1c330b7b2bde69544183219a0fa}{void \hyperlink{classemorph_1_1vReadAndSplit_a39e2a1c330b7b2bde69544183219a0fa}{snapshot\-All\-Windows} ()}\label{classemorph_1_1vReadAndSplit_a39e2a1c330b7b2bde69544183219a0fa}
+
+\begin{DoxyCompactList}\small\item\em snapshot\-All\-Windows freeze the current list of events for each channel \end{DoxyCompactList}\item 
+const \hyperlink{classemorph_1_1vQueue}{emorph\-::v\-Queue} \& \hyperlink{classemorph_1_1vReadAndSplit_a47fa3402c835dfb703090cce063d472f}{get\-Snap} (const int channel)
+\begin{DoxyCompactList}\small\item\em get\-Snap get a list of snapshotted events \end{DoxyCompactList}\item 
+virtual void \hyperlink{classemorph_1_1vReadAndSplit_a1d8534ca9c14f84159546d9d2fb6fd75}{on\-Read} (\hyperlink{classemorph_1_1vBottle}{emorph\-::v\-Bottle} \&incoming)
+\begin{DoxyCompactList}\small\item\em on\-Read splitting is performed as an asynchronous on\-Read function \end{DoxyCompactList}\item 
+\hypertarget{classemorph_1_1vReadAndSplit_a1896b51ae1e8c9d13d875d37c2319b97}{virtual bool {\bfseries open} (const std\-::string port\-Name)}\label{classemorph_1_1vReadAndSplit_a1896b51ae1e8c9d13d875d37c2319b97}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classemorph_1_1vReadAndSplit}{v\-Read\-And\-Split} class splits events into different v\-Windows based on the channel parameter. At any point in time a snapshot of all windows can be performed, after which the resulting v\-Queues can be accessed. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classemorph_1_1vReadAndSplit_a47fa3402c835dfb703090cce063d472f}{\index{emorph\-::v\-Read\-And\-Split@{emorph\-::v\-Read\-And\-Split}!get\-Snap@{get\-Snap}}
+\index{get\-Snap@{get\-Snap}!emorph::vReadAndSplit@{emorph\-::v\-Read\-And\-Split}}
+\subsubsection[{get\-Snap}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf emorph\-::v\-Queue} \& emorph\-::v\-Read\-And\-Split\-::get\-Snap (
+\begin{DoxyParamCaption}
+\item[{const int}]{channel}
+\end{DoxyParamCaption}
+)}}\label{classemorph_1_1vReadAndSplit_a47fa3402c835dfb703090cce063d472f}
+
+
+get\-Snap get a list of snapshotted events 
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel} & the channel value to access \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the list of events in a \hyperlink{classemorph_1_1vQueue}{v\-Queue} 
+\end{DoxyReturn}
+\hypertarget{classemorph_1_1vReadAndSplit_a1d8534ca9c14f84159546d9d2fb6fd75}{\index{emorph\-::v\-Read\-And\-Split@{emorph\-::v\-Read\-And\-Split}!on\-Read@{on\-Read}}
+\index{on\-Read@{on\-Read}!emorph::vReadAndSplit@{emorph\-::v\-Read\-And\-Split}}
+\subsubsection[{on\-Read}]{\setlength{\rightskip}{0pt plus 5cm}void emorph\-::v\-Read\-And\-Split\-::on\-Read (
+\begin{DoxyParamCaption}
+\item[{{\bf emorph\-::v\-Bottle} \&}]{incoming}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classemorph_1_1vReadAndSplit_a1d8534ca9c14f84159546d9d2fb6fd75}
+
+
+on\-Read splitting is performed as an asynchronous on\-Read function 
+
+
+\begin{DoxyParams}{Parameters}
+{\em incoming} & the \hyperlink{classemorph_1_1vBottle}{v\-Bottle} with events of all channels \\
+\hline
+\end{DoxyParams}
+\hypertarget{classemorph_1_1vReadAndSplit_ab59e77834ba842a6508b174c48b5cda2}{\index{emorph\-::v\-Read\-And\-Split@{emorph\-::v\-Read\-And\-Split}!set\-Window\-Size@{set\-Window\-Size}}
+\index{set\-Window\-Size@{set\-Window\-Size}!emorph::vReadAndSplit@{emorph\-::v\-Read\-And\-Split}}
+\subsubsection[{set\-Window\-Size}]{\setlength{\rightskip}{0pt plus 5cm}void emorph\-::v\-Read\-And\-Split\-::set\-Window\-Size (
+\begin{DoxyParamCaption}
+\item[{int}]{windowsize}
+\end{DoxyParamCaption}
+)}}\label{classemorph_1_1vReadAndSplit_ab59e77834ba842a6508b174c48b5cda2}
+
+
+set\-Window\-Size sets the length of time events are stored 
+
+
+\begin{DoxyParams}{Parameters}
+{\em windowsize} & (in us) \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/aglover/workspace/projects/event\-Driven/src/visualization/v\-Framer/include/i\-Cub/v\-Framer.\-h\item 
+/home/aglover/workspace/projects/event\-Driven/src/visualization/v\-Framer/src/v\-Framer.\-cpp\end{DoxyCompactItemize}

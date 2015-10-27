@@ -1,0 +1,122 @@
+\hypertarget{classemorph_1_1vDraw}{\section{emorph\-:\-:v\-Draw Class Reference}
+\label{classemorph_1_1vDraw}\index{emorph\-::v\-Draw@{emorph\-::v\-Draw}}
+}
+
+
+The \hyperlink{classemorph_1_1vDraw}{v\-Draw} class is the base class from which all v\-Drawers should inherit. It contains the draw and get\-Tag functions which must be overloaded, and the sensor size for reference.  
+
+
+
+
+{\ttfamily \#include $<$v\-Draw.\-h$>$}
+
+Inheritance diagram for emorph\-:\-:v\-Draw\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=12.000000cm]{classemorph_1_1vDraw}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classemorph_1_1vDraw_a2f3fcaac36593cb22d7972a27e0f88fa}{set\-Limits} (int Xlimit, int Ylimit)
+\begin{DoxyCompactList}\small\item\em set\-Limits sets the maximum possible values of the position of events that could be drawn (mostly governed by the sensor size). \end{DoxyCompactList}\item 
+virtual void \hyperlink{classemorph_1_1vDraw_af10374185b2bd6f6e099325ec5815847}{draw} (cv\-::\-Mat \&canvas, const \hyperlink{classemorph_1_1vQueue}{emorph\-::v\-Queue} \&e\-Set)=0
+\begin{DoxyCompactList}\small\item\em draw takes an image and overlays the new visualisation textures \end{DoxyCompactList}\item 
+virtual std\-::string \hyperlink{classemorph_1_1vDraw_a3d238b29b58fb63ae3f7d258a199bb68}{get\-Tag} ()=0
+\begin{DoxyCompactList}\small\item\em get\-Tag returns the unique code for this drawing method. The arguments given on the command line must match this code exactly \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classemorph_1_1vDraw_a2cadf813b464b80ec399a2a80e81451e}{int {\bfseries check\-Stagnancy} (const \hyperlink{classemorph_1_1vQueue}{emorph\-::v\-Queue} \&e\-Set)}\label{classemorph_1_1vDraw_a2cadf813b464b80ec399a2a80e81451e}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classemorph_1_1vDraw_a78bd4c31cc63ee1defafde0827168437}{int {\bfseries Xlimit}}\label{classemorph_1_1vDraw_a78bd4c31cc63ee1defafde0827168437}
+
+\item 
+\hypertarget{classemorph_1_1vDraw_a1852c9380bf148cead8a3f0a4c8c593d}{int {\bfseries Ylimit}}\label{classemorph_1_1vDraw_a1852c9380bf148cead8a3f0a4c8c593d}
+
+\item 
+\hypertarget{classemorph_1_1vDraw_a1e3b347cd2f7f36026c3dc0b938da6aa}{int {\bfseries stagnant\-Count}}\label{classemorph_1_1vDraw_a1e3b347cd2f7f36026c3dc0b938da6aa}
+
+\item 
+\hypertarget{classemorph_1_1vDraw_aed9cc2dfe52cb25e2aa4ff3ffb1cb27a}{int {\bfseries p\-T\-S}}\label{classemorph_1_1vDraw_aed9cc2dfe52cb25e2aa4ff3ffb1cb27a}
+
+\item 
+\hypertarget{classemorph_1_1vDraw_a78d59852d20e5ebf88c8152501095f9b}{int {\bfseries clear\-Threshold}}\label{classemorph_1_1vDraw_a78d59852d20e5ebf88c8152501095f9b}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classemorph_1_1vDraw}{v\-Draw} class is the base class from which all v\-Drawers should inherit. It contains the draw and get\-Tag functions which must be overloaded, and the sensor size for reference. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classemorph_1_1vDraw_af10374185b2bd6f6e099325ec5815847}{\index{emorph\-::v\-Draw@{emorph\-::v\-Draw}!draw@{draw}}
+\index{draw@{draw}!emorph::vDraw@{emorph\-::v\-Draw}}
+\subsubsection[{draw}]{\setlength{\rightskip}{0pt plus 5cm}virtual void emorph\-::v\-Draw\-::draw (
+\begin{DoxyParamCaption}
+\item[{cv\-::\-Mat \&}]{canvas, }
+\item[{const {\bf emorph\-::v\-Queue} \&}]{e\-Set}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classemorph_1_1vDraw_af10374185b2bd6f6e099325ec5815847}
+
+
+draw takes an image and overlays the new visualisation textures 
+
+
+\begin{DoxyParams}{Parameters}
+{\em canvas} & is the image which may or may not yet exist \\
+\hline
+{\em e\-Set} & is the set of events which could possibly be drawn \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classemorph_1_1isoDraw_aa30dd2dbb7d8f9f087f48582b6772d69}{emorph\-::iso\-Draw}, \hyperlink{classemorph_1_1fflowDraw_ae2214e69d31fb9fdcab0e5ba9c8b6f99}{emorph\-::fflow\-Draw}, \hyperlink{classemorph_1_1fixedDraw_a6023c32885fc396258fd111a0ed277c6}{emorph\-::fixed\-Draw}, \hyperlink{classemorph_1_1surfDraw_a3b448daead5d0bbc9e61fdc0022c0c8b}{emorph\-::surf\-Draw}, \hyperlink{classemorph_1_1circleDraw_a03dde28736c280049798d5f9619a8be5}{emorph\-::circle\-Draw}, \hyperlink{classemorph_1_1blobDraw_af2be44e448d04221db47e9b21b03aeec}{emorph\-::blob\-Draw}, \hyperlink{classemorph_1_1clusterDraw_a79e1d35439561ce08431da19a480e88c}{emorph\-::cluster\-Draw}, \hyperlink{classemorph_1_1flowDraw_a28eeaf6490d8e4f5b334200562d2c31b}{emorph\-::flow\-Draw}, \hyperlink{classemorph_1_1integralDraw_a18b3d64b6b81b43c66df4c67955429ff}{emorph\-::integral\-Draw}, \hyperlink{classemorph_1_1lifeDraw_a2323f8371720151079ab6304d1672853}{emorph\-::life\-Draw}, and \hyperlink{classemorph_1_1addressDraw_a31228f7f61455afb4b7b1536e601c854}{emorph\-::address\-Draw}.
+
+\hypertarget{classemorph_1_1vDraw_a3d238b29b58fb63ae3f7d258a199bb68}{\index{emorph\-::v\-Draw@{emorph\-::v\-Draw}!get\-Tag@{get\-Tag}}
+\index{get\-Tag@{get\-Tag}!emorph::vDraw@{emorph\-::v\-Draw}}
+\subsubsection[{get\-Tag}]{\setlength{\rightskip}{0pt plus 5cm}virtual std\-::string emorph\-::v\-Draw\-::get\-Tag (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classemorph_1_1vDraw_a3d238b29b58fb63ae3f7d258a199bb68}
+
+
+get\-Tag returns the unique code for this drawing method. The arguments given on the command line must match this code exactly 
+
+\begin{DoxyReturn}{Returns}
+the tag code 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classemorph_1_1isoDraw_a9c62708bc4446b0e55cddb9f47e31d89}{emorph\-::iso\-Draw}, \hyperlink{classemorph_1_1fflowDraw_a742dbd851c4c3a9aca679505571f951d}{emorph\-::fflow\-Draw}, \hyperlink{classemorph_1_1fixedDraw_a3b703843af2824a63c27aacb713d7f50}{emorph\-::fixed\-Draw}, \hyperlink{classemorph_1_1surfDraw_aa65dc027fd2d96a01218230525f270e2}{emorph\-::surf\-Draw}, \hyperlink{classemorph_1_1circleDraw_ae725bd75bc70f72c14c1d01e0365080b}{emorph\-::circle\-Draw}, \hyperlink{classemorph_1_1blobDraw_ad0970eb3689b4fb08aec786184ec2f92}{emorph\-::blob\-Draw}, \hyperlink{classemorph_1_1clusterDraw_a2b6aff21bcfc2088f8b580ee8a0e74ba}{emorph\-::cluster\-Draw}, \hyperlink{classemorph_1_1flowDraw_a3ba90985c688de6ac753b575e7a322f0}{emorph\-::flow\-Draw}, \hyperlink{classemorph_1_1integralDraw_a3383c3587a1d99fb3a2352ae4e02371d}{emorph\-::integral\-Draw}, \hyperlink{classemorph_1_1lifeDraw_a11b718fa894541473ea67e0d98331d7a}{emorph\-::life\-Draw}, and \hyperlink{classemorph_1_1addressDraw_a82a6050de6d2950cb6598b0f64cada24}{emorph\-::address\-Draw}.
+
+\hypertarget{classemorph_1_1vDraw_a2f3fcaac36593cb22d7972a27e0f88fa}{\index{emorph\-::v\-Draw@{emorph\-::v\-Draw}!set\-Limits@{set\-Limits}}
+\index{set\-Limits@{set\-Limits}!emorph::vDraw@{emorph\-::v\-Draw}}
+\subsubsection[{set\-Limits}]{\setlength{\rightskip}{0pt plus 5cm}void emorph\-::v\-Draw\-::set\-Limits (
+\begin{DoxyParamCaption}
+\item[{int}]{Xlimit, }
+\item[{int}]{Ylimit}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classemorph_1_1vDraw_a2f3fcaac36593cb22d7972a27e0f88fa}
+
+
+set\-Limits sets the maximum possible values of the position of events that could be drawn (mostly governed by the sensor size). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Xlimit} & is the maximum x value (width) \\
+\hline
+{\em Ylimit} & is the maximium y value (height) \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/aglover/workspace/projects/event\-Driven/src/visualization/v\-Framer/include/i\-Cub/v\-Draw.\-h\end{DoxyCompactItemize}

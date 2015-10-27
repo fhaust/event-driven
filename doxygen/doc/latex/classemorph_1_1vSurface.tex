@@ -1,0 +1,101 @@
+\hypertarget{classemorph_1_1vSurface}{\section{emorph\-:\-:v\-Surface Class Reference}
+\label{classemorph_1_1vSurface}\index{emorph\-::v\-Surface@{emorph\-::v\-Surface}}
+}
+
+
+The \hyperlink{classemorph_1_1vWindow}{v\-Window} class holds a list of events for a period of time as specified. Event expiry is checked each time new events are added and expired events are removed. At any point in time a copy of the current list of events can be requested.  
+
+
+
+
+{\ttfamily \#include $<$v\-Surface.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classemorph_1_1vSurface_a7cd409f3b050a8cfbf9293284741eb6f}{v\-Surface} (int width=128, int height=128)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classemorph_1_1vWindow}{v\-Window} constructor \end{DoxyCompactList}\item 
+\hypertarget{classemorph_1_1vSurface_a16d06483fa8a093bc1676c97deb9a074}{{\bfseries v\-Surface} (const \hyperlink{classemorph_1_1vSurface}{v\-Surface} \&)}\label{classemorph_1_1vSurface_a16d06483fa8a093bc1676c97deb9a074}
+
+\item 
+\hypertarget{classemorph_1_1vSurface_ad5f34493d533520c6913f9b938bc1f62}{\hyperlink{classemorph_1_1vSurface}{v\-Surface} {\bfseries operator=} (const \hyperlink{classemorph_1_1vSurface}{v\-Surface} \&)}\label{classemorph_1_1vSurface_ad5f34493d533520c6913f9b938bc1f62}
+
+\item 
+\hyperlink{classemorph_1_1vEvent}{v\-Event} $\ast$ \hyperlink{classemorph_1_1vSurface_aeb801c9d1a4b5c801b389a7f9ef9b82d}{add\-Event} (\hyperlink{classemorph_1_1AddressEvent}{emorph\-::\-Address\-Event} \&event)
+\begin{DoxyCompactList}\small\item\em add\-Event adds an event to the window. Also checks for expired events. \end{DoxyCompactList}\item 
+\hyperlink{classemorph_1_1vEvent}{v\-Event} $\ast$ \hyperlink{classemorph_1_1vSurface_ad348c7b75c0cb7530af3835021ef101e}{get\-Most\-Recent} ()
+\begin{DoxyCompactList}\small\item\em get\-Most\-Recent \end{DoxyCompactList}\item 
+\hypertarget{classemorph_1_1vSurface_a51d798ee57bbd56df9644b9dacd7e4b7}{void {\bfseries clear} ()}\label{classemorph_1_1vSurface_a51d798ee57bbd56df9644b9dacd7e4b7}
+
+\item 
+\hypertarget{classemorph_1_1vSurface_af7b1bfed295daca8e16ec4f563470b54}{const \hyperlink{classemorph_1_1vQueue}{v\-Queue} \& {\bfseries get\-S\-U\-R\-F} (int d)}\label{classemorph_1_1vSurface_af7b1bfed295daca8e16ec4f563470b54}
+
+\item 
+\hypertarget{classemorph_1_1vSurface_ae0095a43c5848a2fa8602aa5f9ad2040}{const \hyperlink{classemorph_1_1vQueue}{v\-Queue} \& {\bfseries get\-S\-U\-R\-F} (int x, int y, int d)}\label{classemorph_1_1vSurface_ae0095a43c5848a2fa8602aa5f9ad2040}
+
+\item 
+\hypertarget{classemorph_1_1vSurface_ad4b09e955e93cad783cd1fa137cfcb73}{const \hyperlink{classemorph_1_1vQueue}{v\-Queue} \& {\bfseries get\-S\-U\-R\-F} (int xl, int xh, int yl, int yh)}\label{classemorph_1_1vSurface_ad4b09e955e93cad783cd1fa137cfcb73}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classemorph_1_1vWindow}{v\-Window} class holds a list of events for a period of time as specified. Event expiry is checked each time new events are added and expired events are removed. At any point in time a copy of the current list of events can be requested. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classemorph_1_1vSurface_a7cd409f3b050a8cfbf9293284741eb6f}{\index{emorph\-::v\-Surface@{emorph\-::v\-Surface}!v\-Surface@{v\-Surface}}
+\index{v\-Surface@{v\-Surface}!emorph::vSurface@{emorph\-::v\-Surface}}
+\subsubsection[{v\-Surface}]{\setlength{\rightskip}{0pt plus 5cm}emorph\-::v\-Surface\-::v\-Surface (
+\begin{DoxyParamCaption}
+\item[{int}]{width = {\ttfamily 128}, }
+\item[{int}]{height = {\ttfamily 128}}
+\end{DoxyParamCaption}
+)}}\label{classemorph_1_1vSurface_a7cd409f3b050a8cfbf9293284741eb6f}
+
+
+\hyperlink{classemorph_1_1vWindow}{v\-Window} constructor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window\-Size} & optional time to store events (in us) \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classemorph_1_1vSurface_aeb801c9d1a4b5c801b389a7f9ef9b82d}{\index{emorph\-::v\-Surface@{emorph\-::v\-Surface}!add\-Event@{add\-Event}}
+\index{add\-Event@{add\-Event}!emorph::vSurface@{emorph\-::v\-Surface}}
+\subsubsection[{add\-Event}]{\setlength{\rightskip}{0pt plus 5cm}{\bf v\-Event} $\ast$ emorph\-::v\-Surface\-::add\-Event (
+\begin{DoxyParamCaption}
+\item[{{\bf emorph\-::\-Address\-Event} \&}]{event}
+\end{DoxyParamCaption}
+)}}\label{classemorph_1_1vSurface_aeb801c9d1a4b5c801b389a7f9ef9b82d}
+
+
+add\-Event adds an event to the window. Also checks for expired events. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & the event to add \\
+\hline
+\end{DoxyParams}
+\hypertarget{classemorph_1_1vSurface_ad348c7b75c0cb7530af3835021ef101e}{\index{emorph\-::v\-Surface@{emorph\-::v\-Surface}!get\-Most\-Recent@{get\-Most\-Recent}}
+\index{get\-Most\-Recent@{get\-Most\-Recent}!emorph::vSurface@{emorph\-::v\-Surface}}
+\subsubsection[{get\-Most\-Recent}]{\setlength{\rightskip}{0pt plus 5cm}{\bf v\-Event} $\ast$ emorph\-::v\-Surface\-::get\-Most\-Recent (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classemorph_1_1vSurface_ad348c7b75c0cb7530af3835021ef101e}
+
+
+get\-Most\-Recent 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/aglover/workspace/projects/event\-Driven/emorph\-\_\-lib/include/i\-Cub/emorph/v\-Surface.\-h\item 
+/home/aglover/workspace/projects/event\-Driven/emorph\-\_\-lib/src/v\-Surface.\-cpp\end{DoxyCompactItemize}

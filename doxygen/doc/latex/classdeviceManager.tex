@@ -1,0 +1,63 @@
+\hypertarget{classdeviceManager}{\section{device\-Manager Class Reference}
+\label{classdeviceManager}\index{device\-Manager@{device\-Manager}}
+}
+
+
+The \hyperlink{classdeviceManager}{device\-Manager} class opens the device and implements a constant read.  
+
+
+
+
+{\ttfamily \#include $<$device\-Manager.\-h$>$}
+
+Inheritance diagram for device\-Manager\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classdeviceManager}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classdeviceManager_ad3fd308a8add5e51c1c145896bc2daf9}{virtual bool {\bfseries open\-Device} ()}\label{classdeviceManager_ad3fd308a8add5e51c1c145896bc2daf9}
+
+\item 
+\hypertarget{classdeviceManager_ae643291e5d1732bfe72032ea62c5253b}{virtual void {\bfseries close\-Device} ()}\label{classdeviceManager_ae643291e5d1732bfe72032ea62c5253b}
+
+\item 
+\hypertarget{classdeviceManager_a368b612f7207d4777351fbb58ae92682}{int {\bfseries write\-Device} (std\-::vector$<$ unsigned int $>$ \&device\-Data)}\label{classdeviceManager_a368b612f7207d4777351fbb58ae92682}
+
+\item 
+\hypertarget{classdeviceManager_abb8987142dce5d83c05773576a643f50}{const std\-::vector$<$ char $>$ \& {\bfseries read\-Device} (int \&n\-Bytes\-Read)}\label{classdeviceManager_abb8987142dce5d83c05773576a643f50}
+
+\item 
+\hypertarget{classdeviceManager_a1cbcde6f497b8472b873e739f75e92e4}{{\bfseries device\-Manager} (bool buffered\-Read=false, unsigned int max\-Buffer\-Size=M\-A\-X\-\_\-\-B\-U\-F\-\_\-\-S\-I\-Z\-E)}\label{classdeviceManager_a1cbcde6f497b8472b873e739f75e92e4}
+
+\item 
+\hypertarget{classdeviceManager_a16183255591219aaf6986997a486ff6a}{const unsigned int {\bfseries get\-Buffer\-Size} ()}\label{classdeviceManager_a16183255591219aaf6986997a486ff6a}
+
+\item 
+\hypertarget{classdeviceManager_a5e0e8c642ce32a7e7a435a8cbc563576}{const std\-::string {\bfseries get\-Dev\-Type} ()}\label{classdeviceManager_a5e0e8c642ce32a7e7a435a8cbc563576}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classdeviceManager_af9556035e202ee95a17f2ecf5b7101db}{bool {\bfseries buffered\-Read}}\label{classdeviceManager_af9556035e202ee95a17f2ecf5b7101db}
+
+\item 
+\hypertarget{classdeviceManager_a1918c9e6863e6465e5d34ca86edcbfb7}{int {\bfseries dev\-Desc}}\label{classdeviceManager_a1918c9e6863e6465e5d34ca86edcbfb7}
+
+\item 
+\hypertarget{classdeviceManager_a6065df91f833483f38887ca5c1fea141}{std\-::string {\bfseries device\-Name}}\label{classdeviceManager_a6065df91f833483f38887ca5c1fea141}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classdeviceManager}{device\-Manager} class opens the device and implements a constant read. 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/aglover/workspace/projects/event\-Driven/src/grabbers/zynq\-Grabber/include/i\-Cub/device\-Manager.\-h\item 
+/home/aglover/workspace/projects/event\-Driven/src/grabbers/zynq\-Grabber/src/device\-Manager.\-cpp\end{DoxyCompactItemize}

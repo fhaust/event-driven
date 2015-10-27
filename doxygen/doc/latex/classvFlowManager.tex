@@ -1,0 +1,69 @@
+\hypertarget{classvFlowManager}{\section{v\-Flow\-Manager Class Reference}
+\label{classvFlowManager}\index{v\-Flow\-Manager@{v\-Flow\-Manager}}
+}
+
+
+The \hyperlink{classvFlowManager}{v\-Flow\-Manager} class performs event-\/based optical flow.  
+
+
+
+
+{\ttfamily \#include $<$v\-Flow.\-h$>$}
+
+Inheritance diagram for v\-Flow\-Manager\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classvFlowManager}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classvFlowManager_a9d28c98ce6f6c0591a89f5055153e295}{{\bfseries v\-Flow\-Manager} (int height, int width, int filter\-Size, int min\-Evts\-On\-Plane)}\label{classvFlowManager_a9d28c98ce6f6c0591a89f5055153e295}
+
+\item 
+bool \hyperlink{classvFlowManager_a2c299db37662565d5b0c59679b790a4b}{open} (std\-::string module\-Name, bool strictness=false)
+\begin{DoxyCompactList}\small\item\em open the port and start callback \end{DoxyCompactList}\item 
+\hypertarget{classvFlowManager_abcf434ef8391ec6741c0754bc4a88ab8}{void {\bfseries close} ()}\label{classvFlowManager_abcf434ef8391ec6741c0754bc4a88ab8}
+
+\item 
+\hypertarget{classvFlowManager_a10d85ce69f60a672adba81aff4a046d8}{void {\bfseries interrupt} ()}\label{classvFlowManager_a10d85ce69f60a672adba81aff4a046d8}
+
+\item 
+\hypertarget{classvFlowManager_a67113d949355705533cc65aca8a15b40}{void {\bfseries on\-Read} (\hyperlink{classemorph_1_1vBottle}{emorph\-::v\-Bottle} \&in\-Bottle)}\label{classvFlowManager_a67113d949355705533cc65aca8a15b40}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classvFlowManager}{v\-Flow\-Manager} class performs event-\/based optical flow. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classvFlowManager_a2c299db37662565d5b0c59679b790a4b}{\index{v\-Flow\-Manager@{v\-Flow\-Manager}!open@{open}}
+\index{open@{open}!vFlowManager@{v\-Flow\-Manager}}
+\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}bool v\-Flow\-Manager\-::open (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{module\-Name, }
+\item[{bool}]{strictness = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}}\label{classvFlowManager_a2c299db37662565d5b0c59679b790a4b}
+
+
+open the port and start callback 
+
+
+\begin{DoxyParams}{Parameters}
+{\em module\-Name} & defines port names (default v\-Flow) \\
+\hline
+{\em strictness} & read and write strcitly such that events are not lost \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on successful open 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/aglover/workspace/projects/event\-Driven/src/processing/v\-Flow/include/\hyperlink{vFlow_8h}{v\-Flow.\-h}\item 
+/home/aglover/workspace/projects/event\-Driven/src/processing/v\-Flow/src/v\-Flow.\-cpp\end{DoxyCompactItemize}

@@ -1,0 +1,151 @@
+\hypertarget{classeventBottle}{\section{event\-Bottle Class Reference}
+\label{classeventBottle}\index{event\-Bottle@{event\-Bottle}}
+}
+
+
+{\ttfamily \#include $<$event\-Bottle.\-h$>$}
+
+Inheritance diagram for event\-Bottle\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classeventBottle}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classeventBottle_aa1fbb7e85119920debfccc223f2843f1}{event\-Bottle} ()
+\item 
+\hyperlink{classeventBottle_a44740910c0137e62aa3b4c3860109497}{event\-Bottle} (char $\ast$c, int i)
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\hyperlink{classeventBottle_a29410be24e171cf5d73ee073712b062e}{event\-Bottle} (yarp\-::os\-::\-Bottle $\ast$b)
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\hyperlink{classeventBottle_a2c1c9f1259b33b74f8e0b9111df47a39}{$\sim$event\-Bottle} ()
+\item 
+\hypertarget{classeventBottle_aa238f06090b0fb1e25592f8a188401d9}{void {\bfseries operator=} (\hyperlink{classeventBottle}{event\-Bottle} \&)}\label{classeventBottle_aa238f06090b0fb1e25592f8a188401d9}
+
+\item 
+\hypertarget{classeventBottle_a7cf605ab90defeb9da312a91eb55ac46}{\hyperlink{classeventBottle_a7cf605ab90defeb9da312a91eb55ac46}{event\-Bottle} (const \hyperlink{classeventBottle}{event\-Bottle} \&)}\label{classeventBottle_a7cf605ab90defeb9da312a91eb55ac46}
+
+\begin{DoxyCompactList}\small\item\em copy constructor \end{DoxyCompactList}\item 
+\hypertarget{classeventBottle_a524fd9080ab98e87f89e548c83c695fa}{virtual bool {\bfseries write} (yarp\-::os\-::\-Connection\-Writer \&)}\label{classeventBottle_a524fd9080ab98e87f89e548c83c695fa}
+
+\item 
+\hypertarget{classeventBottle_a2601d1ced98aea595bec4917c680fe71}{virtual bool {\bfseries read} (yarp\-::os\-::\-Connection\-Reader \&)}\label{classeventBottle_a2601d1ced98aea595bec4917c680fe71}
+
+\item 
+void \hyperlink{classeventBottle_a75ea08df0fd8ce6cf8331678ef587413}{set\-\_\-data} (char $\ast$c, int i)
+\begin{DoxyCompactList}\small\item\em function for setting the data afterward \end{DoxyCompactList}\item 
+void \hyperlink{classeventBottle_ade587dd59d1a5f1a84de281b9aa119f5}{set\-\_\-data} (yarp\-::os\-::\-Bottle $\ast$b)
+\begin{DoxyCompactList}\small\item\em function for setting the data afterward \end{DoxyCompactList}\item 
+\hypertarget{classeventBottle_a59afc1ae08a0392ecd34fddff82319da}{yarp\-::os\-::\-Bottle $\ast$ {\bfseries get\-\_\-packet} ()}\label{classeventBottle_a59afc1ae08a0392ecd34fddff82319da}
+
+\item 
+\hypertarget{classeventBottle_a81a5715c8f7f59af32e792c77695dbac}{int {\bfseries get\-\_\-size\-Of\-Packet} ()}\label{classeventBottle_a81a5715c8f7f59af32e792c77695dbac}
+
+\item 
+\hypertarget{classeventBottle_ac0a84996be2cf4da895423d1b4d4632d}{int {\bfseries get\-\_\-bytes\-Of\-Packet} ()}\label{classeventBottle_ac0a84996be2cf4da895423d1b4d4632d}
+
+\item 
+\hypertarget{classeventBottle_ad80009e5ff12f9fc2611818ea3c12d42}{int {\bfseries get\-\_\-size\-Of\-Bottle} ()}\label{classeventBottle_ad80009e5ff12f9fc2611818ea3c12d42}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+portable class for the bottle of events 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classeventBottle_aa1fbb7e85119920debfccc223f2843f1}{\index{event\-Bottle@{event\-Bottle}!event\-Bottle@{event\-Bottle}}
+\index{event\-Bottle@{event\-Bottle}!eventBottle@{event\-Bottle}}
+\subsubsection[{event\-Bottle}]{\setlength{\rightskip}{0pt plus 5cm}event\-Bottle\-::event\-Bottle (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classeventBottle_aa1fbb7e85119920debfccc223f2843f1}
+default constructor \hypertarget{classeventBottle_a44740910c0137e62aa3b4c3860109497}{\index{event\-Bottle@{event\-Bottle}!event\-Bottle@{event\-Bottle}}
+\index{event\-Bottle@{event\-Bottle}!eventBottle@{event\-Bottle}}
+\subsubsection[{event\-Bottle}]{\setlength{\rightskip}{0pt plus 5cm}event\-Bottle\-::event\-Bottle (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{c, }
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)}}\label{classeventBottle_a44740910c0137e62aa3b4c3860109497}
+
+
+constructor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & pointer to the char buffer \\
+\hline
+{\em i} & number of bytes \\
+\hline
+\end{DoxyParams}
+\hypertarget{classeventBottle_a29410be24e171cf5d73ee073712b062e}{\index{event\-Bottle@{event\-Bottle}!event\-Bottle@{event\-Bottle}}
+\index{event\-Bottle@{event\-Bottle}!eventBottle@{event\-Bottle}}
+\subsubsection[{event\-Bottle}]{\setlength{\rightskip}{0pt plus 5cm}event\-Bottle\-::event\-Bottle (
+\begin{DoxyParamCaption}
+\item[{yarp\-::os\-::\-Bottle $\ast$}]{b}
+\end{DoxyParamCaption}
+)}}\label{classeventBottle_a29410be24e171cf5d73ee073712b062e}
+
+
+constructor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & bottle that constructs the class\\
+\hline
+\end{DoxyParams}
+constructor from a bottle \hypertarget{classeventBottle_a2c1c9f1259b33b74f8e0b9111df47a39}{\index{event\-Bottle@{event\-Bottle}!$\sim$event\-Bottle@{$\sim$event\-Bottle}}
+\index{$\sim$event\-Bottle@{$\sim$event\-Bottle}!eventBottle@{event\-Bottle}}
+\subsubsection[{$\sim$event\-Bottle}]{\setlength{\rightskip}{0pt plus 5cm}event\-Bottle\-::$\sim$event\-Bottle (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classeventBottle_a2c1c9f1259b33b74f8e0b9111df47a39}
+destructor 
+
+\subsection{Member Function Documentation}
+\hypertarget{classeventBottle_a75ea08df0fd8ce6cf8331678ef587413}{\index{event\-Bottle@{event\-Bottle}!set\-\_\-data@{set\-\_\-data}}
+\index{set\-\_\-data@{set\-\_\-data}!eventBottle@{event\-Bottle}}
+\subsubsection[{set\-\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}void event\-Bottle\-::set\-\_\-data (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{c, }
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)}}\label{classeventBottle_a75ea08df0fd8ce6cf8331678ef587413}
+
+
+function for setting the data afterward 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & pointer to the char buffer of events \\
+\hline
+{\em i} & number of bytes in the buffer \\
+\hline
+\end{DoxyParams}
+\hypertarget{classeventBottle_ade587dd59d1a5f1a84de281b9aa119f5}{\index{event\-Bottle@{event\-Bottle}!set\-\_\-data@{set\-\_\-data}}
+\index{set\-\_\-data@{set\-\_\-data}!eventBottle@{event\-Bottle}}
+\subsubsection[{set\-\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}void event\-Bottle\-::set\-\_\-data (
+\begin{DoxyParamCaption}
+\item[{yarp\-::os\-::\-Bottle $\ast$}]{b}
+\end{DoxyParamCaption}
+)}}\label{classeventBottle_ade587dd59d1a5f1a84de281b9aa119f5}
+
+
+function for setting the data afterward 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & bottle pointer \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/aglover/workspace/projects/event\-Driven/emorph\-\_\-lib/include/i\-Cub/emorph/event\-Bottle.\-h\item 
+/home/aglover/workspace/projects/event\-Driven/emorph\-\_\-lib/src/event\-Bottle.\-cpp\end{DoxyCompactItemize}

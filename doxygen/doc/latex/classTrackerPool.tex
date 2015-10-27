@@ -1,0 +1,93 @@
+\hypertarget{classTrackerPool}{\section{Tracker\-Pool Class Reference}
+\label{classTrackerPool}\index{Tracker\-Pool@{Tracker\-Pool}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classTrackerPool_aba64099a18fc9b97eeb5b60f92ca849c}{void {\bfseries set\-Initial\-Params} (double sig\-\_\-x, double sig\-\_\-y, double sig\-\_\-xy, double alpha\-\_\-pos, double alpha\-\_\-shape, bool fixed\-\_\-shape)}\label{classTrackerPool_aba64099a18fc9b97eeb5b60f92ca849c}
+
+\item 
+\hypertarget{classTrackerPool_aacfd7b8d8f8d47cf609e6e4ed64bbc1a}{void {\bfseries set\-Decay\-Params} (double decay\-\_\-tau, double Tact, double Tinact, double Tfree, double Tevent, int rate)}\label{classTrackerPool_aacfd7b8d8f8d47cf609e6e4ed64bbc1a}
+
+\item 
+\hypertarget{classTrackerPool_a2ae5849c22bc24b688bd5ddf153e9e33}{void {\bfseries set\-Comparison\-Params} (double max\-\_\-dist)}\label{classTrackerPool_a2ae5849c22bc24b688bd5ddf153e9e33}
+
+\item 
+\hypertarget{classTrackerPool_a947f58bef9d46a290cb3ea6ec99d5fb8}{void {\bfseries set\-Cluster\-Limit} (int limit)}\label{classTrackerPool_a947f58bef9d46a290cb3ea6ec99d5fb8}
+
+\item 
+\hypertarget{classTrackerPool_af54f9236f7d525dde5a14fdee98f92c4}{int {\bfseries update} (\hyperlink{classemorph_1_1AddressEvent}{emorph\-::\-Address\-Event} \&event, std\-::vector$<$ \hyperlink{classemorph_1_1ClusterEventGauss}{emorph\-::\-Cluster\-Event\-Gauss} $>$ \&cl\-Evts)}\label{classTrackerPool_af54f9236f7d525dde5a14fdee98f92c4}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classTrackerPool_afc17f68023420c6d43ac4b67afa3b14d}{int {\bfseries get\-New\-Tracker} ()}\label{classTrackerPool_afc17f68023420c6d43ac4b67afa3b14d}
+
+\item 
+\hypertarget{classTrackerPool_a598259d38408ff2067da4235eab68f9d}{\hyperlink{classemorph_1_1ClusterEventGauss}{emorph\-::\-Cluster\-Event\-Gauss} {\bfseries make\-Event} (int i, int ts)}\label{classTrackerPool_a598259d38408ff2067da4235eab68f9d}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classTrackerPool_a8a8bdb245a4e706de8f9263cc31537cd}{std\-::vector$<$ \hyperlink{classBlobTracker}{Blob\-Tracker} $>$ {\bfseries trackers\-\_\-}}\label{classTrackerPool_a8a8bdb245a4e706de8f9263cc31537cd}
+
+\item 
+\hypertarget{classTrackerPool_af542ddb16630e451065d5e3258cd19de}{int {\bfseries nb\-\_\-ev\-\_\-regulate\-\_\-}}\label{classTrackerPool_af542ddb16630e451065d5e3258cd19de}
+
+\item 
+\hypertarget{classTrackerPool_a5aed0a9c9621c9fde35034a8b5f58085}{int {\bfseries count\-\_\-}}\label{classTrackerPool_a5aed0a9c9621c9fde35034a8b5f58085}
+
+\item 
+\hypertarget{classTrackerPool_ac8ecd306ab6f0562ca2d6231ff367093}{unsigned long int {\bfseries ts\-\_\-last\-\_\-reg\-\_\-}}\label{classTrackerPool_ac8ecd306ab6f0562ca2d6231ff367093}
+
+\item 
+\hypertarget{classTrackerPool_abe7439ab3a403e77b56def1ae14ef1c3}{double {\bfseries decay\-\_\-tau}}\label{classTrackerPool_abe7439ab3a403e77b56def1ae14ef1c3}
+
+\item 
+\hypertarget{classTrackerPool_aaf7de0a0903e66d7ae07cc11cb6ea072}{double {\bfseries Tact}}\label{classTrackerPool_aaf7de0a0903e66d7ae07cc11cb6ea072}
+
+\item 
+\hypertarget{classTrackerPool_a75d2a1d3867ac839d3c24aa26241950e}{double {\bfseries Tinact}}\label{classTrackerPool_a75d2a1d3867ac839d3c24aa26241950e}
+
+\item 
+\hypertarget{classTrackerPool_ac75f2360d9bb76e0a6c79b31129c58c5}{double {\bfseries Tfree}}\label{classTrackerPool_ac75f2360d9bb76e0a6c79b31129c58c5}
+
+\item 
+\hypertarget{classTrackerPool_a3798b118a9592e75d59ad0d0e5fe438b}{double {\bfseries Tevent}}\label{classTrackerPool_a3798b118a9592e75d59ad0d0e5fe438b}
+
+\item 
+\hypertarget{classTrackerPool_ad57d26c00d4329747f59df1b7b24ea3b}{double {\bfseries max\-\_\-dist}}\label{classTrackerPool_ad57d26c00d4329747f59df1b7b24ea3b}
+
+\item 
+\hypertarget{classTrackerPool_af83ad39640f58a747253b85046083140}{bool {\bfseries fixed\-\_\-shape\-\_\-}}\label{classTrackerPool_af83ad39640f58a747253b85046083140}
+
+\item 
+\hypertarget{classTrackerPool_a6a92ea09387253159839324143b6206a}{double {\bfseries sig\-\_\-x2\-\_\-}}\label{classTrackerPool_a6a92ea09387253159839324143b6206a}
+
+\item 
+\hypertarget{classTrackerPool_a3181cb8343949ab80181c9028ae114fa}{double {\bfseries sig\-\_\-y2\-\_\-}}\label{classTrackerPool_a3181cb8343949ab80181c9028ae114fa}
+
+\item 
+\hypertarget{classTrackerPool_a9018c85457b2616efe8f718f1602b32a}{double {\bfseries sig\-\_\-xy\-\_\-}}\label{classTrackerPool_a9018c85457b2616efe8f718f1602b32a}
+
+\item 
+\hypertarget{classTrackerPool_ad67aaae3b2c777330ccb4abb9bf60884}{double {\bfseries alpha\-\_\-pos}}\label{classTrackerPool_ad67aaae3b2c777330ccb4abb9bf60884}
+
+\item 
+\hypertarget{classTrackerPool_ad134dda445a2b5eea2d2101a6e5c2132}{double {\bfseries alpha\-\_\-shape}}\label{classTrackerPool_ad134dda445a2b5eea2d2101a6e5c2132}
+
+\item 
+\hypertarget{classTrackerPool_a6c9e6cdff31c0ab40c19f54d30d315cc}{double {\bfseries cluster\-Limit}}\label{classTrackerPool_a6c9e6cdff31c0ab40c19f54d30d315cc}
+
+\item 
+\hypertarget{classTrackerPool_a81cc371a7b834bdff0dbaa3601a21d14}{\hyperlink{classemorph_1_1vtsHelper}{emorph\-::vts\-Helper} {\bfseries unwrap}}\label{classTrackerPool_a81cc371a7b834bdff0dbaa3601a21d14}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/aglover/workspace/projects/event\-Driven/src/processing/v\-Cluster/include/tracker\-Pool.\-h\item 
+/home/aglover/workspace/projects/event\-Driven/src/processing/v\-Cluster/src/tracker\-Pool.\-cpp\end{DoxyCompactItemize}

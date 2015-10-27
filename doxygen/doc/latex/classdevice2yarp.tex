@@ -1,0 +1,771 @@
+\hypertarget{classdevice2yarp}{\section{device2yarp Class Reference}
+\label{classdevice2yarp}\index{device2yarp@{device2yarp}}
+}
+Inheritance diagram for device2yarp\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classdevice2yarp}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classdevice2yarp_a2871ae4aafa163197e3991486d3c8b18}{{\bfseries device2yarp} (std\-::string device\-Number, bool save, std\-::string filename)}\label{classdevice2yarp_a2871ae4aafa163197e3991486d3c8b18}
+
+\item 
+\hypertarget{classdevice2yarp_aa01eb91fc90a62cb29df3fdc8387cb54}{virtual void {\bfseries run} ()}\label{classdevice2yarp_aa01eb91fc90a62cb29df3fdc8387cb54}
+
+\item 
+\hypertarget{classdevice2yarp_ae429ee3f9ab68ceea96daf63553e7700}{virtual void {\bfseries thread\-Release} ()}\label{classdevice2yarp_ae429ee3f9ab68ceea96daf63553e7700}
+
+\item 
+void \hyperlink{classdevice2yarp_afbcd3cc36aeda39c389037ff480a0c3a}{prepare\-Biases} ()
+\item 
+void \hyperlink{classdevice2yarp_ab103ad6beed47415371ec71cc2ac30c3}{prepare\-Biases\-Right} ()
+\item 
+void \hyperlink{classdevice2yarp_aaaff6edb1a3d7830d6e87b14226e9207}{set\-Device\-Name} (std\-::string name)
+\item 
+void \hyperlink{classdevice2yarp_af60c47d12785c8bbc8ffb0a29f740a97}{close\-Device} ()
+\item 
+void \hyperlink{classdevice2yarp_a2ad1d6367e70bbc19d163b80a959843b}{prog\-Bias} (std\-::string name, int bits, int value, int camera=1)
+\item 
+void \hyperlink{classdevice2yarp_a148575c0588c481968e8e1c89aa1b2d8}{latch\-Commit} (int camera=1)
+\item 
+void \hyperlink{classdevice2yarp_ad5db8d09f97eb010e8037de3aafe4c0c}{latch\-Commit\-A\-Es} (int camera=1)
+\item 
+void \hyperlink{classdevice2yarp_a5227cd9f8f77fc3282abdb4f067c72db}{reset\-Pins} (int camera=1)
+\item 
+void \hyperlink{classdevice2yarp_acd91e6286807878481a293929579a358}{release\-Powerdown} (int camera=1)
+\item 
+void \hyperlink{classdevice2yarp_a468ec9658d04b2c89ea383a398245279}{set\-Powerdown} (int camera=1)
+\item 
+void \hyperlink{classdevice2yarp_a65726cde64ea739945753f5b51e84d8b}{prog\-Bit} (int bitvalue, int camera=1)
+\item 
+void \hyperlink{classdevice2yarp_a5291edc3d845bc6dd35c6d1a783ea80c}{prog\-Bit\-A\-Es} (int bitvalue, int camera=1)
+\item 
+void \hyperlink{classdevice2yarp_a39c03e4a4e0ac4b891947b872974f8af}{biasprogtx} (int time, int latch, int clock, int data, int powerdown=1, int camera=1)
+\item 
+void \hyperlink{classdevice2yarp_a19c60dd42e00da0e717da9fe17a5b2f5}{monitor} (int secs, int camera=1)
+\item 
+void \hyperlink{classdevice2yarp_a300aab882d64fa1a51b2058b530c8093}{sending\-Bias} ()
+\item 
+void \hyperlink{classdevice2yarp_a704565be367fa28840df912a97bdc25a}{set\-Only\-Left} ()
+\item 
+void \hyperlink{classdevice2yarp_a94653e9e8ce5ac4a60ae920f0ee41ee6}{set\-From\-Binary} (bool value)
+\item 
+void \hyperlink{classdevice2yarp_a1982c1021d9e51c789dfc5369dcb46bf}{set\-Binary\-File} (F\-I\-L\-E $\ast$f)
+\item 
+void \hyperlink{classdevice2yarp_a88ab89295bfefefbc9ac225dd5078dec}{set\-P\-R} (double value)
+\item 
+void \hyperlink{classdevice2yarp_a96f85845d4902b017e7d082cbc736735}{set\-F\-O\-L\-L} (double value)
+\item 
+void \hyperlink{classdevice2yarp_a813be66e7621e575682f44e92efa20ef}{set\-D\-I\-F\-F} (double value)
+\item 
+void \hyperlink{classdevice2yarp_ac072c8cf5341ae1bb187eacbaf8bc439}{set\-D\-I\-F\-F\-O\-N} (double value)
+\item 
+void \hyperlink{classdevice2yarp_a263fc557cd4333c9cff0e9e4a3f283cd}{set\-P\-U\-Y} (double value)
+\item 
+void \hyperlink{classdevice2yarp_a24d972c0905025758a9d25607feaccf3}{set\-R\-E\-F\-R} (double value)
+\item 
+void \hyperlink{classdevice2yarp_add886f7ed984d3b47788df4cd294f2bc}{set\-R\-E\-Q} (double value)
+\item 
+void \hyperlink{classdevice2yarp_a202830f7c13eaff007c2594cc5e1d1ba}{set\-D\-I\-F\-F\-O\-F\-F} (double value)
+\item 
+void \hyperlink{classdevice2yarp_a1e9703e924441f50217aa4ded2be6c57}{set\-P\-U\-X} (double value)
+\item 
+void \hyperlink{classdevice2yarp_aea2c1f8287d1f9e95ac1ff2dc5ed878b}{set\-R\-E\-Q\-P\-D} (double value)
+\item 
+void \hyperlink{classdevice2yarp_afaf4e9eba2aa0d2f08602b7a03c6e5bf}{set\-I\-N\-J\-G\-N\-D} (double value)
+\item 
+void \hyperlink{classdevice2yarp_a469e0006636382fb25380147e146114f}{set\-C\-A\-S} (double value)
+\item 
+void \hyperlink{classdevice2yarp_a223f809aba867489a6b95c3b1ff66b15}{set\-P\-R\-Right} (double value)
+\item 
+void \hyperlink{classdevice2yarp_a27c6f1f15ceed7423118303431c9b54c}{set\-F\-O\-L\-L\-Right} (double value)
+\item 
+void \hyperlink{classdevice2yarp_add9e9df708995e75461d4589aae966c2}{set\-D\-I\-F\-F\-Right} (double value)
+\item 
+void \hyperlink{classdevice2yarp_aba1778322dffc46348dd78f0b86e56b0}{set\-D\-I\-F\-F\-O\-N\-Right} (double value)
+\item 
+void \hyperlink{classdevice2yarp_a0e60d43576b2d8f9c26519d09a14a564}{set\-P\-U\-Y\-Right} (double value)
+\item 
+void \hyperlink{classdevice2yarp_a026af71fd22a53e87896a1b1e5fbe2d9}{set\-R\-E\-F\-R\-Right} (double value)
+\item 
+void \hyperlink{classdevice2yarp_acb5c45d2835c3ea311f81daf2f4545cd}{set\-R\-E\-Q\-Right} (double value)
+\item 
+void \hyperlink{classdevice2yarp_a5a62082f903ae997ee15f3616c332635}{set\-D\-I\-F\-F\-O\-F\-F\-Right} (double value)
+\item 
+void \hyperlink{classdevice2yarp_a86ac1223c0a74dacebc26597e1a16ae9}{set\-P\-U\-X\-Right} (double value)
+\item 
+void \hyperlink{classdevice2yarp_aaac082c96f859df902389e60be83c328}{set\-R\-E\-Q\-P\-D\-Right} (double value)
+\item 
+void \hyperlink{classdevice2yarp_afab1c11e9c891a5b2103afa5d6101374}{set\-I\-N\-J\-G\-N\-D\-Right} (double value)
+\item 
+void \hyperlink{classdevice2yarp_aaa3573b8c4bb7e0348c97b87ef8edcd2}{set\-C\-A\-S\-Right} (double value)
+\item 
+void \hyperlink{classdevice2yarp_a4ef67bab52a9bbee2c590960afffc2e3}{set\-Dump\-Event} (bool value)
+\item 
+bool \hyperlink{classdevice2yarp_ac53bd1cc581717e681ad3ea0962db697}{set\-Dump\-File} (std\-::string value)
+\item 
+void \hyperlink{classdevice2yarp_ad5c9adf0e41f78d38a1d1b9265011dfa}{set\-Sync\-Bit} ()
+\item 
+double \hyperlink{classdevice2yarp_a85742caba0c13dbec757e034419ac570}{get\-P\-R} ()
+\item 
+double \hyperlink{classdevice2yarp_a45256821729711ac676b98fd86a2934b}{get\-F\-O\-L\-L} ()
+\item 
+double \hyperlink{classdevice2yarp_ac49ff696fd4ca634fb00188c7f84d5e0}{get\-D\-I\-F\-F} ()
+\item 
+double \hyperlink{classdevice2yarp_ae82c9cacfc6df370b144f764e1ba2d71}{get\-D\-I\-F\-F\-O\-N} ()
+\item 
+double \hyperlink{classdevice2yarp_a35e0c7313c78f7d4cfe7403b20742be7}{get\-P\-U\-Y} ()
+\item 
+double \hyperlink{classdevice2yarp_a0cfbc83863780cb22777ea0df0dff4bb}{get\-R\-E\-F\-R} ()
+\item 
+double \hyperlink{classdevice2yarp_a02f8aaa21afea5a2c3cf690d4a7a810a}{get\-R\-E\-Q} ()
+\item 
+double \hyperlink{classdevice2yarp_aebb49f54bbbd1f89767ebc7473cf27f8}{get\-D\-I\-F\-F\-O\-F\-F} ()
+\item 
+double \hyperlink{classdevice2yarp_a17cabe5685326832b143a95bc079fce2}{get\-P\-U\-X} ()
+\item 
+double \hyperlink{classdevice2yarp_ad9668df280f370362a6be3d020766b53}{get\-R\-E\-Q\-P\-D} ()
+\item 
+double \hyperlink{classdevice2yarp_a71d866e65c1a1da500cde870fc9a4202}{get\-I\-N\-J\-G\-N\-D} ()
+\item 
+double \hyperlink{classdevice2yarp_a2695a28ec3a0864fd1f16bf58b757338}{get\-C\-A\-S} ()
+\item 
+\hypertarget{classdevice2yarp_a2edb15ab91293f60b5ba2426ae247e1e}{virtual void {\bfseries run} ()}\label{classdevice2yarp_a2edb15ab91293f60b5ba2426ae247e1e}
+
+\item 
+\hypertarget{classdevice2yarp_a684963ad891d4dc4e19c5128c88bfff0}{virtual void {\bfseries thread\-Release} ()}\label{classdevice2yarp_a684963ad891d4dc4e19c5128c88bfff0}
+
+\item 
+\hypertarget{classdevice2yarp_a900e8d97564445ea12e8d11448197f4a}{virtual bool {\bfseries thread\-Init} (std\-::string module\-Name=\char`\"{}\char`\"{})}\label{classdevice2yarp_a900e8d97564445ea12e8d11448197f4a}
+
+\item 
+\hypertarget{classdevice2yarp_ad969527a6d59bcfb1be6349a80defa13}{void {\bfseries attach\-Device\-Manager} (\hyperlink{classdeviceManager}{device\-Manager} $\ast$dev\-Manager)}\label{classdevice2yarp_ad969527a6d59bcfb1be6349a80defa13}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classdevice2yarp_a39c03e4a4e0ac4b891947b872974f8af}{\index{device2yarp@{device2yarp}!biasprogtx@{biasprogtx}}
+\index{biasprogtx@{biasprogtx}!device2yarp@{device2yarp}}
+\subsubsection[{biasprogtx}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::biasprogtx (
+\begin{DoxyParamCaption}
+\item[{int}]{time, }
+\item[{int}]{latch, }
+\item[{int}]{clock, }
+\item[{int}]{data, }
+\item[{int}]{powerdown = {\ttfamily 1}, }
+\item[{int}]{camera = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)}}\label{classdevice2yarp_a39c03e4a4e0ac4b891947b872974f8af}
+function that send biases to F\-P\-G\-A.\-The F\-P\-G\-A then first waits for the sequencer time to expire as for every other A\-E, then the lowest four bits of the A\-E, R\-I\-G\-H\-T/\-L\-E\-F\-T in 0x\-F\-F0000\-R\-L would be interpreted as new values for the bias programming pins. 
+\begin{DoxyParams}{Parameters}
+{\em time} & sequence time to expire before programming data \\
+\hline
+{\em latch} & control of the latch pin \\
+\hline
+{\em clock} & control of the clock \\
+\hline
+{\em data} & data that is sent \\
+\hline
+{\em powerdown} & control of the powerdown \\
+\hline
+{\em camera} & defines which camera is going to be programmed (Left 1, Right 0) \\
+\hline
+\end{DoxyParams}
+\hypertarget{classdevice2yarp_af60c47d12785c8bbc8ffb0a29f740a97}{\index{device2yarp@{device2yarp}!close\-Device@{close\-Device}}
+\index{close\-Device@{close\-Device}!device2yarp@{device2yarp}}
+\subsubsection[{close\-Device}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::close\-Device (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classdevice2yarp_af60c47d12785c8bbc8ffb0a29f740a97}
+function that correcly closes the device \hypertarget{classdevice2yarp_a2695a28ec3a0864fd1f16bf58b757338}{\index{device2yarp@{device2yarp}!get\-C\-A\-S@{get\-C\-A\-S}}
+\index{get\-C\-A\-S@{get\-C\-A\-S}!device2yarp@{device2yarp}}
+\subsubsection[{get\-C\-A\-S}]{\setlength{\rightskip}{0pt plus 5cm}double device2yarp\-::get\-C\-A\-S (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_a2695a28ec3a0864fd1f16bf58b757338}
+function that returns the bias for Left camera \begin{DoxyReturn}{Returns}
+value of the bias 
+\end{DoxyReturn}
+\hypertarget{classdevice2yarp_ac49ff696fd4ca634fb00188c7f84d5e0}{\index{device2yarp@{device2yarp}!get\-D\-I\-F\-F@{get\-D\-I\-F\-F}}
+\index{get\-D\-I\-F\-F@{get\-D\-I\-F\-F}!device2yarp@{device2yarp}}
+\subsubsection[{get\-D\-I\-F\-F}]{\setlength{\rightskip}{0pt plus 5cm}double device2yarp\-::get\-D\-I\-F\-F (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_ac49ff696fd4ca634fb00188c7f84d5e0}
+function that returns the bias for Left camera \begin{DoxyReturn}{Returns}
+value of the bias 
+\end{DoxyReturn}
+\hypertarget{classdevice2yarp_aebb49f54bbbd1f89767ebc7473cf27f8}{\index{device2yarp@{device2yarp}!get\-D\-I\-F\-F\-O\-F\-F@{get\-D\-I\-F\-F\-O\-F\-F}}
+\index{get\-D\-I\-F\-F\-O\-F\-F@{get\-D\-I\-F\-F\-O\-F\-F}!device2yarp@{device2yarp}}
+\subsubsection[{get\-D\-I\-F\-F\-O\-F\-F}]{\setlength{\rightskip}{0pt plus 5cm}double device2yarp\-::get\-D\-I\-F\-F\-O\-F\-F (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_aebb49f54bbbd1f89767ebc7473cf27f8}
+function that returns the bias for Left camera \begin{DoxyReturn}{Returns}
+value of the bias 
+\end{DoxyReturn}
+\hypertarget{classdevice2yarp_ae82c9cacfc6df370b144f764e1ba2d71}{\index{device2yarp@{device2yarp}!get\-D\-I\-F\-F\-O\-N@{get\-D\-I\-F\-F\-O\-N}}
+\index{get\-D\-I\-F\-F\-O\-N@{get\-D\-I\-F\-F\-O\-N}!device2yarp@{device2yarp}}
+\subsubsection[{get\-D\-I\-F\-F\-O\-N}]{\setlength{\rightskip}{0pt plus 5cm}double device2yarp\-::get\-D\-I\-F\-F\-O\-N (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_ae82c9cacfc6df370b144f764e1ba2d71}
+function that returns the bias for Left camera \begin{DoxyReturn}{Returns}
+value of the bias 
+\end{DoxyReturn}
+\hypertarget{classdevice2yarp_a45256821729711ac676b98fd86a2934b}{\index{device2yarp@{device2yarp}!get\-F\-O\-L\-L@{get\-F\-O\-L\-L}}
+\index{get\-F\-O\-L\-L@{get\-F\-O\-L\-L}!device2yarp@{device2yarp}}
+\subsubsection[{get\-F\-O\-L\-L}]{\setlength{\rightskip}{0pt plus 5cm}double device2yarp\-::get\-F\-O\-L\-L (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_a45256821729711ac676b98fd86a2934b}
+function that returns the bias for Left camera \begin{DoxyReturn}{Returns}
+value of the bias 
+\end{DoxyReturn}
+\hypertarget{classdevice2yarp_a71d866e65c1a1da500cde870fc9a4202}{\index{device2yarp@{device2yarp}!get\-I\-N\-J\-G\-N\-D@{get\-I\-N\-J\-G\-N\-D}}
+\index{get\-I\-N\-J\-G\-N\-D@{get\-I\-N\-J\-G\-N\-D}!device2yarp@{device2yarp}}
+\subsubsection[{get\-I\-N\-J\-G\-N\-D}]{\setlength{\rightskip}{0pt plus 5cm}double device2yarp\-::get\-I\-N\-J\-G\-N\-D (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_a71d866e65c1a1da500cde870fc9a4202}
+function that returns the bias for Left camera \begin{DoxyReturn}{Returns}
+value of the bias 
+\end{DoxyReturn}
+\hypertarget{classdevice2yarp_a85742caba0c13dbec757e034419ac570}{\index{device2yarp@{device2yarp}!get\-P\-R@{get\-P\-R}}
+\index{get\-P\-R@{get\-P\-R}!device2yarp@{device2yarp}}
+\subsubsection[{get\-P\-R}]{\setlength{\rightskip}{0pt plus 5cm}double device2yarp\-::get\-P\-R (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_a85742caba0c13dbec757e034419ac570}
+function that returns the bias for Left camera \begin{DoxyReturn}{Returns}
+value of the bias 
+\end{DoxyReturn}
+\hypertarget{classdevice2yarp_a17cabe5685326832b143a95bc079fce2}{\index{device2yarp@{device2yarp}!get\-P\-U\-X@{get\-P\-U\-X}}
+\index{get\-P\-U\-X@{get\-P\-U\-X}!device2yarp@{device2yarp}}
+\subsubsection[{get\-P\-U\-X}]{\setlength{\rightskip}{0pt plus 5cm}double device2yarp\-::get\-P\-U\-X (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_a17cabe5685326832b143a95bc079fce2}
+function that returns the bias for Left camera \begin{DoxyReturn}{Returns}
+value of the bias 
+\end{DoxyReturn}
+\hypertarget{classdevice2yarp_a35e0c7313c78f7d4cfe7403b20742be7}{\index{device2yarp@{device2yarp}!get\-P\-U\-Y@{get\-P\-U\-Y}}
+\index{get\-P\-U\-Y@{get\-P\-U\-Y}!device2yarp@{device2yarp}}
+\subsubsection[{get\-P\-U\-Y}]{\setlength{\rightskip}{0pt plus 5cm}double device2yarp\-::get\-P\-U\-Y (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_a35e0c7313c78f7d4cfe7403b20742be7}
+function that returns the bias for Left camera \begin{DoxyReturn}{Returns}
+value of the bias 
+\end{DoxyReturn}
+\hypertarget{classdevice2yarp_a0cfbc83863780cb22777ea0df0dff4bb}{\index{device2yarp@{device2yarp}!get\-R\-E\-F\-R@{get\-R\-E\-F\-R}}
+\index{get\-R\-E\-F\-R@{get\-R\-E\-F\-R}!device2yarp@{device2yarp}}
+\subsubsection[{get\-R\-E\-F\-R}]{\setlength{\rightskip}{0pt plus 5cm}double device2yarp\-::get\-R\-E\-F\-R (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_a0cfbc83863780cb22777ea0df0dff4bb}
+function that returns the bias for Left camera \begin{DoxyReturn}{Returns}
+value of the bias 
+\end{DoxyReturn}
+\hypertarget{classdevice2yarp_a02f8aaa21afea5a2c3cf690d4a7a810a}{\index{device2yarp@{device2yarp}!get\-R\-E\-Q@{get\-R\-E\-Q}}
+\index{get\-R\-E\-Q@{get\-R\-E\-Q}!device2yarp@{device2yarp}}
+\subsubsection[{get\-R\-E\-Q}]{\setlength{\rightskip}{0pt plus 5cm}double device2yarp\-::get\-R\-E\-Q (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_a02f8aaa21afea5a2c3cf690d4a7a810a}
+function that returns the bias for Left camera \begin{DoxyReturn}{Returns}
+value of the bias 
+\end{DoxyReturn}
+\hypertarget{classdevice2yarp_ad9668df280f370362a6be3d020766b53}{\index{device2yarp@{device2yarp}!get\-R\-E\-Q\-P\-D@{get\-R\-E\-Q\-P\-D}}
+\index{get\-R\-E\-Q\-P\-D@{get\-R\-E\-Q\-P\-D}!device2yarp@{device2yarp}}
+\subsubsection[{get\-R\-E\-Q\-P\-D}]{\setlength{\rightskip}{0pt plus 5cm}double device2yarp\-::get\-R\-E\-Q\-P\-D (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_ad9668df280f370362a6be3d020766b53}
+function that returns the bias for Left camera \begin{DoxyReturn}{Returns}
+value of the bias 
+\end{DoxyReturn}
+\hypertarget{classdevice2yarp_a148575c0588c481968e8e1c89aa1b2d8}{\index{device2yarp@{device2yarp}!latch\-Commit@{latch\-Commit}}
+\index{latch\-Commit@{latch\-Commit}!device2yarp@{device2yarp}}
+\subsubsection[{latch\-Commit}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::latch\-Commit (
+\begin{DoxyParamCaption}
+\item[{int}]{camera = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)}}\label{classdevice2yarp_a148575c0588c481968e8e1c89aa1b2d8}
+function used to append to a list of bits necessary to send the latch commit  reference to the camera (left 1, right 0) \hypertarget{classdevice2yarp_ad5db8d09f97eb010e8037de3aafe4c0c}{\index{device2yarp@{device2yarp}!latch\-Commit\-A\-Es@{latch\-Commit\-A\-Es}}
+\index{latch\-Commit\-A\-Es@{latch\-Commit\-A\-Es}!device2yarp@{device2yarp}}
+\subsubsection[{latch\-Commit\-A\-Es}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::latch\-Commit\-A\-Es (
+\begin{DoxyParamCaption}
+\item[{int}]{camera = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)}}\label{classdevice2yarp_ad5db8d09f97eb010e8037de3aafe4c0c}
+function used to append to a list of bits necessary to send the latch commit (version 2)  reference to the camera (left 1, right 0) \hypertarget{classdevice2yarp_a19c60dd42e00da0e717da9fe17a5b2f5}{\index{device2yarp@{device2yarp}!monitor@{monitor}}
+\index{monitor@{monitor}!device2yarp@{device2yarp}}
+\subsubsection[{monitor}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::monitor (
+\begin{DoxyParamCaption}
+\item[{int}]{secs, }
+\item[{int}]{camera = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)}}\label{classdevice2yarp_a19c60dd42e00da0e717da9fe17a5b2f5}
+function that monitors the output for seconds 
+\begin{DoxyParams}{Parameters}
+{\em secs} & number of seconds to wait  reference to the camera (left 1, right 0) \\
+\hline
+\end{DoxyParams}
+\hypertarget{classdevice2yarp_afbcd3cc36aeda39c389037ff480a0c3a}{\index{device2yarp@{device2yarp}!prepare\-Biases@{prepare\-Biases}}
+\index{prepare\-Biases@{prepare\-Biases}!device2yarp@{device2yarp}}
+\subsubsection[{prepare\-Biases}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::prepare\-Biases (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classdevice2yarp_afbcd3cc36aeda39c389037ff480a0c3a}
+function that prepares biases either reading them from file or reading the default value \hypertarget{classdevice2yarp_ab103ad6beed47415371ec71cc2ac30c3}{\index{device2yarp@{device2yarp}!prepare\-Biases\-Right@{prepare\-Biases\-Right}}
+\index{prepare\-Biases\-Right@{prepare\-Biases\-Right}!device2yarp@{device2yarp}}
+\subsubsection[{prepare\-Biases\-Right}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::prepare\-Biases\-Right (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classdevice2yarp_ab103ad6beed47415371ec71cc2ac30c3}
+function that prepares biases either reading them from file or reading the default value \hypertarget{classdevice2yarp_a2ad1d6367e70bbc19d163b80a959843b}{\index{device2yarp@{device2yarp}!prog\-Bias@{prog\-Bias}}
+\index{prog\-Bias@{prog\-Bias}!device2yarp@{device2yarp}}
+\subsubsection[{prog\-Bias}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::prog\-Bias (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{name, }
+\item[{int}]{bits, }
+\item[{int}]{value, }
+\item[{int}]{camera = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)}}\label{classdevice2yarp_a2ad1d6367e70bbc19d163b80a959843b}
+function used to append to a list of commands every single bit necessary to program bias 
+\begin{DoxyParams}{Parameters}
+{\em name} & name of the bias to be set \\
+\hline
+{\em bits} & data of the programming \\
+\hline
+{\em value} & value of the programming  reference to the camera (left 1, right 0) \\
+\hline
+\end{DoxyParams}
+\hypertarget{classdevice2yarp_a65726cde64ea739945753f5b51e84d8b}{\index{device2yarp@{device2yarp}!prog\-Bit@{prog\-Bit}}
+\index{prog\-Bit@{prog\-Bit}!device2yarp@{device2yarp}}
+\subsubsection[{prog\-Bit}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::prog\-Bit (
+\begin{DoxyParamCaption}
+\item[{int}]{bitvalue, }
+\item[{int}]{camera = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)}}\label{classdevice2yarp_a65726cde64ea739945753f5b51e84d8b}
+correct sequence of signals necessary to program a bit 
+\begin{DoxyParams}{Parameters}
+{\em bitvalue} & value of the bit to be programmed  reference to the camera (left 1, right 0) \\
+\hline
+\end{DoxyParams}
+\hypertarget{classdevice2yarp_a5291edc3d845bc6dd35c6d1a783ea80c}{\index{device2yarp@{device2yarp}!prog\-Bit\-A\-Es@{prog\-Bit\-A\-Es}}
+\index{prog\-Bit\-A\-Es@{prog\-Bit\-A\-Es}!device2yarp@{device2yarp}}
+\subsubsection[{prog\-Bit\-A\-Es}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::prog\-Bit\-A\-Es (
+\begin{DoxyParamCaption}
+\item[{int}]{bitvalue, }
+\item[{int}]{camera = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)}}\label{classdevice2yarp_a5291edc3d845bc6dd35c6d1a783ea80c}
+correct sequence of signals necessary to program a bit (version 2) 
+\begin{DoxyParams}{Parameters}
+{\em bitvalue} & value of the bit to be programmed  reference to the camera (left 1, right 0) \\
+\hline
+\end{DoxyParams}
+\hypertarget{classdevice2yarp_acd91e6286807878481a293929579a358}{\index{device2yarp@{device2yarp}!release\-Powerdown@{release\-Powerdown}}
+\index{release\-Powerdown@{release\-Powerdown}!device2yarp@{device2yarp}}
+\subsubsection[{release\-Powerdown}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::release\-Powerdown (
+\begin{DoxyParamCaption}
+\item[{int}]{camera = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)}}\label{classdevice2yarp_acd91e6286807878481a293929579a358}
+function that sends the powerdown to the correct value after the biases have been programmed  reference to the camera (left 1, right 0) \hypertarget{classdevice2yarp_a5227cd9f8f77fc3282abdb4f067c72db}{\index{device2yarp@{device2yarp}!reset\-Pins@{reset\-Pins}}
+\index{reset\-Pins@{reset\-Pins}!device2yarp@{device2yarp}}
+\subsubsection[{reset\-Pins}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::reset\-Pins (
+\begin{DoxyParamCaption}
+\item[{int}]{camera = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)}}\label{classdevice2yarp_a5227cd9f8f77fc3282abdb4f067c72db}
+function used to reset the device to default after a bias is sent  reference to the camera (left 1, right 0) \hypertarget{classdevice2yarp_a300aab882d64fa1a51b2058b530c8093}{\index{device2yarp@{device2yarp}!sending\-Bias@{sending\-Bias}}
+\index{sending\-Bias@{sending\-Bias}!device2yarp@{device2yarp}}
+\subsubsection[{sending\-Bias}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::sending\-Bias (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classdevice2yarp_a300aab882d64fa1a51b2058b530c8093}
+fuction that connects to the device and write the sequence of signals to the device F\-P\-G\-A no matter what camera has been set the biases go to the board \hypertarget{classdevice2yarp_a1982c1021d9e51c789dfc5369dcb46bf}{\index{device2yarp@{device2yarp}!set\-Binary\-File@{set\-Binary\-File}}
+\index{set\-Binary\-File@{set\-Binary\-File}!device2yarp@{device2yarp}}
+\subsubsection[{set\-Binary\-File}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::set\-Binary\-File (
+\begin{DoxyParamCaption}
+\item[{F\-I\-L\-E $\ast$}]{f}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_a1982c1021d9e51c789dfc5369dcb46bf}
+function that sets the reference of the input binary file 
+\begin{DoxyParams}{Parameters}
+{\em f} & pointer to the F\-I\-L\-E of the binary \\
+\hline
+\end{DoxyParams}
+\hypertarget{classdevice2yarp_a469e0006636382fb25380147e146114f}{\index{device2yarp@{device2yarp}!set\-C\-A\-S@{set\-C\-A\-S}}
+\index{set\-C\-A\-S@{set\-C\-A\-S}!device2yarp@{device2yarp}}
+\subsubsection[{set\-C\-A\-S}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::set\-C\-A\-S (
+\begin{DoxyParamCaption}
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_a469e0006636382fb25380147e146114f}
+function that sets the bias 
+\begin{DoxyParams}{Parameters}
+{\em value} & value of the bias \\
+\hline
+\end{DoxyParams}
+\hypertarget{classdevice2yarp_aaa3573b8c4bb7e0348c97b87ef8edcd2}{\index{device2yarp@{device2yarp}!set\-C\-A\-S\-Right@{set\-C\-A\-S\-Right}}
+\index{set\-C\-A\-S\-Right@{set\-C\-A\-S\-Right}!device2yarp@{device2yarp}}
+\subsubsection[{set\-C\-A\-S\-Right}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::set\-C\-A\-S\-Right (
+\begin{DoxyParamCaption}
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_aaa3573b8c4bb7e0348c97b87ef8edcd2}
+function that sets the bias Right 
+\begin{DoxyParams}{Parameters}
+{\em value} & value of the bias \\
+\hline
+\end{DoxyParams}
+\hypertarget{classdevice2yarp_aaaff6edb1a3d7830d6e87b14226e9207}{\index{device2yarp@{device2yarp}!set\-Device\-Name@{set\-Device\-Name}}
+\index{set\-Device\-Name@{set\-Device\-Name}!device2yarp@{device2yarp}}
+\subsubsection[{set\-Device\-Name}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::set\-Device\-Name (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{name}
+\end{DoxyParamCaption}
+)}}\label{classdevice2yarp_aaaff6edb1a3d7830d6e87b14226e9207}
+function used to set the name of the port device where biases are sent 
+\begin{DoxyParams}{Parameters}
+{\em name} & name of the port of the device \\
+\hline
+\end{DoxyParams}
+\hypertarget{classdevice2yarp_a813be66e7621e575682f44e92efa20ef}{\index{device2yarp@{device2yarp}!set\-D\-I\-F\-F@{set\-D\-I\-F\-F}}
+\index{set\-D\-I\-F\-F@{set\-D\-I\-F\-F}!device2yarp@{device2yarp}}
+\subsubsection[{set\-D\-I\-F\-F}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::set\-D\-I\-F\-F (
+\begin{DoxyParamCaption}
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_a813be66e7621e575682f44e92efa20ef}
+function that sets the bias 
+\begin{DoxyParams}{Parameters}
+{\em value} & value of the bias \\
+\hline
+\end{DoxyParams}
+\hypertarget{classdevice2yarp_a202830f7c13eaff007c2594cc5e1d1ba}{\index{device2yarp@{device2yarp}!set\-D\-I\-F\-F\-O\-F\-F@{set\-D\-I\-F\-F\-O\-F\-F}}
+\index{set\-D\-I\-F\-F\-O\-F\-F@{set\-D\-I\-F\-F\-O\-F\-F}!device2yarp@{device2yarp}}
+\subsubsection[{set\-D\-I\-F\-F\-O\-F\-F}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::set\-D\-I\-F\-F\-O\-F\-F (
+\begin{DoxyParamCaption}
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_a202830f7c13eaff007c2594cc5e1d1ba}
+function that sets the bias 
+\begin{DoxyParams}{Parameters}
+{\em value} & value of the bias \\
+\hline
+\end{DoxyParams}
+\hypertarget{classdevice2yarp_a5a62082f903ae997ee15f3616c332635}{\index{device2yarp@{device2yarp}!set\-D\-I\-F\-F\-O\-F\-F\-Right@{set\-D\-I\-F\-F\-O\-F\-F\-Right}}
+\index{set\-D\-I\-F\-F\-O\-F\-F\-Right@{set\-D\-I\-F\-F\-O\-F\-F\-Right}!device2yarp@{device2yarp}}
+\subsubsection[{set\-D\-I\-F\-F\-O\-F\-F\-Right}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::set\-D\-I\-F\-F\-O\-F\-F\-Right (
+\begin{DoxyParamCaption}
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_a5a62082f903ae997ee15f3616c332635}
+function that sets the bias Right 
+\begin{DoxyParams}{Parameters}
+{\em value} & value of the bias \\
+\hline
+\end{DoxyParams}
+\hypertarget{classdevice2yarp_ac072c8cf5341ae1bb187eacbaf8bc439}{\index{device2yarp@{device2yarp}!set\-D\-I\-F\-F\-O\-N@{set\-D\-I\-F\-F\-O\-N}}
+\index{set\-D\-I\-F\-F\-O\-N@{set\-D\-I\-F\-F\-O\-N}!device2yarp@{device2yarp}}
+\subsubsection[{set\-D\-I\-F\-F\-O\-N}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::set\-D\-I\-F\-F\-O\-N (
+\begin{DoxyParamCaption}
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_ac072c8cf5341ae1bb187eacbaf8bc439}
+function that sets the bias 
+\begin{DoxyParams}{Parameters}
+{\em value} & value of the bias \\
+\hline
+\end{DoxyParams}
+\hypertarget{classdevice2yarp_aba1778322dffc46348dd78f0b86e56b0}{\index{device2yarp@{device2yarp}!set\-D\-I\-F\-F\-O\-N\-Right@{set\-D\-I\-F\-F\-O\-N\-Right}}
+\index{set\-D\-I\-F\-F\-O\-N\-Right@{set\-D\-I\-F\-F\-O\-N\-Right}!device2yarp@{device2yarp}}
+\subsubsection[{set\-D\-I\-F\-F\-O\-N\-Right}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::set\-D\-I\-F\-F\-O\-N\-Right (
+\begin{DoxyParamCaption}
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_aba1778322dffc46348dd78f0b86e56b0}
+function that sets the bias Right 
+\begin{DoxyParams}{Parameters}
+{\em value} & value of the bias \\
+\hline
+\end{DoxyParams}
+\hypertarget{classdevice2yarp_add9e9df708995e75461d4589aae966c2}{\index{device2yarp@{device2yarp}!set\-D\-I\-F\-F\-Right@{set\-D\-I\-F\-F\-Right}}
+\index{set\-D\-I\-F\-F\-Right@{set\-D\-I\-F\-F\-Right}!device2yarp@{device2yarp}}
+\subsubsection[{set\-D\-I\-F\-F\-Right}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::set\-D\-I\-F\-F\-Right (
+\begin{DoxyParamCaption}
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_add9e9df708995e75461d4589aae966c2}
+function that sets the bias Right 
+\begin{DoxyParams}{Parameters}
+{\em value} & value of the bias \\
+\hline
+\end{DoxyParams}
+\hypertarget{classdevice2yarp_a4ef67bab52a9bbee2c590960afffc2e3}{\index{device2yarp@{device2yarp}!set\-Dump\-Event@{set\-Dump\-Event}}
+\index{set\-Dump\-Event@{set\-Dump\-Event}!device2yarp@{device2yarp}}
+\subsubsection[{set\-Dump\-Event}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::set\-Dump\-Event (
+\begin{DoxyParamCaption}
+\item[{bool}]{value}
+\end{DoxyParamCaption}
+)}}\label{classdevice2yarp_a4ef67bab52a9bbee2c590960afffc2e3}
+indicates whether the event has to be saved in a file \hypertarget{classdevice2yarp_ac53bd1cc581717e681ad3ea0962db697}{\index{device2yarp@{device2yarp}!set\-Dump\-File@{set\-Dump\-File}}
+\index{set\-Dump\-File@{set\-Dump\-File}!device2yarp@{device2yarp}}
+\subsubsection[{set\-Dump\-File}]{\setlength{\rightskip}{0pt plus 5cm}bool device2yarp\-::set\-Dump\-File (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{value}
+\end{DoxyParamCaption}
+)}}\label{classdevice2yarp_ac53bd1cc581717e681ad3ea0962db697}
+reference to the name of the file where events are dumped \hypertarget{classdevice2yarp_a96f85845d4902b017e7d082cbc736735}{\index{device2yarp@{device2yarp}!set\-F\-O\-L\-L@{set\-F\-O\-L\-L}}
+\index{set\-F\-O\-L\-L@{set\-F\-O\-L\-L}!device2yarp@{device2yarp}}
+\subsubsection[{set\-F\-O\-L\-L}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::set\-F\-O\-L\-L (
+\begin{DoxyParamCaption}
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_a96f85845d4902b017e7d082cbc736735}
+function that sets the bias 
+\begin{DoxyParams}{Parameters}
+{\em value} & value of the bias \\
+\hline
+\end{DoxyParams}
+\hypertarget{classdevice2yarp_a27c6f1f15ceed7423118303431c9b54c}{\index{device2yarp@{device2yarp}!set\-F\-O\-L\-L\-Right@{set\-F\-O\-L\-L\-Right}}
+\index{set\-F\-O\-L\-L\-Right@{set\-F\-O\-L\-L\-Right}!device2yarp@{device2yarp}}
+\subsubsection[{set\-F\-O\-L\-L\-Right}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::set\-F\-O\-L\-L\-Right (
+\begin{DoxyParamCaption}
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_a27c6f1f15ceed7423118303431c9b54c}
+function that sets the bias Right 
+\begin{DoxyParams}{Parameters}
+{\em value} & value of the bias \\
+\hline
+\end{DoxyParams}
+\hypertarget{classdevice2yarp_a94653e9e8ce5ac4a60ae920f0ee41ee6}{\index{device2yarp@{device2yarp}!set\-From\-Binary@{set\-From\-Binary}}
+\index{set\-From\-Binary@{set\-From\-Binary}!device2yarp@{device2yarp}}
+\subsubsection[{set\-From\-Binary}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::set\-From\-Binary (
+\begin{DoxyParamCaption}
+\item[{bool}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_a94653e9e8ce5ac4a60ae920f0ee41ee6}
+set the flag that regulates whether the biases are read from binary or copied from default values \hypertarget{classdevice2yarp_afaf4e9eba2aa0d2f08602b7a03c6e5bf}{\index{device2yarp@{device2yarp}!set\-I\-N\-J\-G\-N\-D@{set\-I\-N\-J\-G\-N\-D}}
+\index{set\-I\-N\-J\-G\-N\-D@{set\-I\-N\-J\-G\-N\-D}!device2yarp@{device2yarp}}
+\subsubsection[{set\-I\-N\-J\-G\-N\-D}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::set\-I\-N\-J\-G\-N\-D (
+\begin{DoxyParamCaption}
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_afaf4e9eba2aa0d2f08602b7a03c6e5bf}
+function that sets the bias 
+\begin{DoxyParams}{Parameters}
+{\em value} & value of the bias \\
+\hline
+\end{DoxyParams}
+\hypertarget{classdevice2yarp_afab1c11e9c891a5b2103afa5d6101374}{\index{device2yarp@{device2yarp}!set\-I\-N\-J\-G\-N\-D\-Right@{set\-I\-N\-J\-G\-N\-D\-Right}}
+\index{set\-I\-N\-J\-G\-N\-D\-Right@{set\-I\-N\-J\-G\-N\-D\-Right}!device2yarp@{device2yarp}}
+\subsubsection[{set\-I\-N\-J\-G\-N\-D\-Right}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::set\-I\-N\-J\-G\-N\-D\-Right (
+\begin{DoxyParamCaption}
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_afab1c11e9c891a5b2103afa5d6101374}
+function that sets the bias Right 
+\begin{DoxyParams}{Parameters}
+{\em value} & value of the bias \\
+\hline
+\end{DoxyParams}
+\hypertarget{classdevice2yarp_a704565be367fa28840df912a97bdc25a}{\index{device2yarp@{device2yarp}!set\-Only\-Left@{set\-Only\-Left}}
+\index{set\-Only\-Left@{set\-Only\-Left}!device2yarp@{device2yarp}}
+\subsubsection[{set\-Only\-Left}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::set\-Only\-Left (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_a704565be367fa28840df912a97bdc25a}
+function that switches only the left camera O\-N \hypertarget{classdevice2yarp_a468ec9658d04b2c89ea383a398245279}{\index{device2yarp@{device2yarp}!set\-Powerdown@{set\-Powerdown}}
+\index{set\-Powerdown@{set\-Powerdown}!device2yarp@{device2yarp}}
+\subsubsection[{set\-Powerdown}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::set\-Powerdown (
+\begin{DoxyParamCaption}
+\item[{int}]{camera = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)}}\label{classdevice2yarp_a468ec9658d04b2c89ea383a398245279}
+function that sends the powerdown to the correct value before switching the device off  reference to the camera (left 1, right 0) \hypertarget{classdevice2yarp_a88ab89295bfefefbc9ac225dd5078dec}{\index{device2yarp@{device2yarp}!set\-P\-R@{set\-P\-R}}
+\index{set\-P\-R@{set\-P\-R}!device2yarp@{device2yarp}}
+\subsubsection[{set\-P\-R}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::set\-P\-R (
+\begin{DoxyParamCaption}
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_a88ab89295bfefefbc9ac225dd5078dec}
+function that sets the bias 
+\begin{DoxyParams}{Parameters}
+{\em value} & value of the bias \\
+\hline
+\end{DoxyParams}
+\hypertarget{classdevice2yarp_a223f809aba867489a6b95c3b1ff66b15}{\index{device2yarp@{device2yarp}!set\-P\-R\-Right@{set\-P\-R\-Right}}
+\index{set\-P\-R\-Right@{set\-P\-R\-Right}!device2yarp@{device2yarp}}
+\subsubsection[{set\-P\-R\-Right}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::set\-P\-R\-Right (
+\begin{DoxyParamCaption}
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_a223f809aba867489a6b95c3b1ff66b15}
+function that sets the bias Right 
+\begin{DoxyParams}{Parameters}
+{\em value} & value of the bias \\
+\hline
+\end{DoxyParams}
+\hypertarget{classdevice2yarp_a1e9703e924441f50217aa4ded2be6c57}{\index{device2yarp@{device2yarp}!set\-P\-U\-X@{set\-P\-U\-X}}
+\index{set\-P\-U\-X@{set\-P\-U\-X}!device2yarp@{device2yarp}}
+\subsubsection[{set\-P\-U\-X}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::set\-P\-U\-X (
+\begin{DoxyParamCaption}
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_a1e9703e924441f50217aa4ded2be6c57}
+function that sets the bias 
+\begin{DoxyParams}{Parameters}
+{\em value} & value of the bias \\
+\hline
+\end{DoxyParams}
+\hypertarget{classdevice2yarp_a86ac1223c0a74dacebc26597e1a16ae9}{\index{device2yarp@{device2yarp}!set\-P\-U\-X\-Right@{set\-P\-U\-X\-Right}}
+\index{set\-P\-U\-X\-Right@{set\-P\-U\-X\-Right}!device2yarp@{device2yarp}}
+\subsubsection[{set\-P\-U\-X\-Right}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::set\-P\-U\-X\-Right (
+\begin{DoxyParamCaption}
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_a86ac1223c0a74dacebc26597e1a16ae9}
+function that sets the bias Right 
+\begin{DoxyParams}{Parameters}
+{\em value} & value of the bias \\
+\hline
+\end{DoxyParams}
+\hypertarget{classdevice2yarp_a263fc557cd4333c9cff0e9e4a3f283cd}{\index{device2yarp@{device2yarp}!set\-P\-U\-Y@{set\-P\-U\-Y}}
+\index{set\-P\-U\-Y@{set\-P\-U\-Y}!device2yarp@{device2yarp}}
+\subsubsection[{set\-P\-U\-Y}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::set\-P\-U\-Y (
+\begin{DoxyParamCaption}
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_a263fc557cd4333c9cff0e9e4a3f283cd}
+function that sets the bias 
+\begin{DoxyParams}{Parameters}
+{\em value} & value of the bias \\
+\hline
+\end{DoxyParams}
+\hypertarget{classdevice2yarp_a0e60d43576b2d8f9c26519d09a14a564}{\index{device2yarp@{device2yarp}!set\-P\-U\-Y\-Right@{set\-P\-U\-Y\-Right}}
+\index{set\-P\-U\-Y\-Right@{set\-P\-U\-Y\-Right}!device2yarp@{device2yarp}}
+\subsubsection[{set\-P\-U\-Y\-Right}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::set\-P\-U\-Y\-Right (
+\begin{DoxyParamCaption}
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_a0e60d43576b2d8f9c26519d09a14a564}
+function that sets the bias Right 
+\begin{DoxyParams}{Parameters}
+{\em value} & value of the bias \\
+\hline
+\end{DoxyParams}
+\hypertarget{classdevice2yarp_a24d972c0905025758a9d25607feaccf3}{\index{device2yarp@{device2yarp}!set\-R\-E\-F\-R@{set\-R\-E\-F\-R}}
+\index{set\-R\-E\-F\-R@{set\-R\-E\-F\-R}!device2yarp@{device2yarp}}
+\subsubsection[{set\-R\-E\-F\-R}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::set\-R\-E\-F\-R (
+\begin{DoxyParamCaption}
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_a24d972c0905025758a9d25607feaccf3}
+function that sets the bias 
+\begin{DoxyParams}{Parameters}
+{\em value} & value of the bias \\
+\hline
+\end{DoxyParams}
+\hypertarget{classdevice2yarp_a026af71fd22a53e87896a1b1e5fbe2d9}{\index{device2yarp@{device2yarp}!set\-R\-E\-F\-R\-Right@{set\-R\-E\-F\-R\-Right}}
+\index{set\-R\-E\-F\-R\-Right@{set\-R\-E\-F\-R\-Right}!device2yarp@{device2yarp}}
+\subsubsection[{set\-R\-E\-F\-R\-Right}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::set\-R\-E\-F\-R\-Right (
+\begin{DoxyParamCaption}
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_a026af71fd22a53e87896a1b1e5fbe2d9}
+function that sets the bias Right 
+\begin{DoxyParams}{Parameters}
+{\em value} & value of the bias \\
+\hline
+\end{DoxyParams}
+\hypertarget{classdevice2yarp_add886f7ed984d3b47788df4cd294f2bc}{\index{device2yarp@{device2yarp}!set\-R\-E\-Q@{set\-R\-E\-Q}}
+\index{set\-R\-E\-Q@{set\-R\-E\-Q}!device2yarp@{device2yarp}}
+\subsubsection[{set\-R\-E\-Q}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::set\-R\-E\-Q (
+\begin{DoxyParamCaption}
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_add886f7ed984d3b47788df4cd294f2bc}
+function that sets the bias 
+\begin{DoxyParams}{Parameters}
+{\em value} & value of the bias \\
+\hline
+\end{DoxyParams}
+\hypertarget{classdevice2yarp_aea2c1f8287d1f9e95ac1ff2dc5ed878b}{\index{device2yarp@{device2yarp}!set\-R\-E\-Q\-P\-D@{set\-R\-E\-Q\-P\-D}}
+\index{set\-R\-E\-Q\-P\-D@{set\-R\-E\-Q\-P\-D}!device2yarp@{device2yarp}}
+\subsubsection[{set\-R\-E\-Q\-P\-D}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::set\-R\-E\-Q\-P\-D (
+\begin{DoxyParamCaption}
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_aea2c1f8287d1f9e95ac1ff2dc5ed878b}
+function that sets the bias 
+\begin{DoxyParams}{Parameters}
+{\em value} & value of the bias \\
+\hline
+\end{DoxyParams}
+\hypertarget{classdevice2yarp_aaac082c96f859df902389e60be83c328}{\index{device2yarp@{device2yarp}!set\-R\-E\-Q\-P\-D\-Right@{set\-R\-E\-Q\-P\-D\-Right}}
+\index{set\-R\-E\-Q\-P\-D\-Right@{set\-R\-E\-Q\-P\-D\-Right}!device2yarp@{device2yarp}}
+\subsubsection[{set\-R\-E\-Q\-P\-D\-Right}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::set\-R\-E\-Q\-P\-D\-Right (
+\begin{DoxyParamCaption}
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_aaac082c96f859df902389e60be83c328}
+function that sets the bias Right 
+\begin{DoxyParams}{Parameters}
+{\em value} & value of the bias \\
+\hline
+\end{DoxyParams}
+\hypertarget{classdevice2yarp_acb5c45d2835c3ea311f81daf2f4545cd}{\index{device2yarp@{device2yarp}!set\-R\-E\-Q\-Right@{set\-R\-E\-Q\-Right}}
+\index{set\-R\-E\-Q\-Right@{set\-R\-E\-Q\-Right}!device2yarp@{device2yarp}}
+\subsubsection[{set\-R\-E\-Q\-Right}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::set\-R\-E\-Q\-Right (
+\begin{DoxyParamCaption}
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classdevice2yarp_acb5c45d2835c3ea311f81daf2f4545cd}
+function that sets the bias Right 
+\begin{DoxyParams}{Parameters}
+{\em value} & value of the bias \\
+\hline
+\end{DoxyParams}
+\hypertarget{classdevice2yarp_ad5c9adf0e41f78d38a1d1b9265011dfa}{\index{device2yarp@{device2yarp}!set\-Sync\-Bit@{set\-Sync\-Bit}}
+\index{set\-Sync\-Bit@{set\-Sync\-Bit}!device2yarp@{device2yarp}}
+\subsubsection[{set\-Sync\-Bit}]{\setlength{\rightskip}{0pt plus 5cm}void device2yarp\-::set\-Sync\-Bit (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classdevice2yarp_ad5c9adf0e41f78d38a1d1b9265011dfa}
+add a bit to the adress to synchronize several records 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/aglover/workspace/projects/event\-Driven/src/grabbers/aex\-Grabber/include/i\-Cub/device2yarp.\-h\item 
+/home/aglover/workspace/projects/event\-Driven/src/grabbers/aex\-Grabber/src/device2yarp.\-cpp\end{DoxyCompactItemize}

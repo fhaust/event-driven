@@ -1,0 +1,199 @@
+\hypertarget{classemorph_1_1vWindow}{\section{emorph\-:\-:v\-Window Class Reference}
+\label{classemorph_1_1vWindow}\index{emorph\-::v\-Window@{emorph\-::v\-Window}}
+}
+
+
+The \hyperlink{classemorph_1_1vWindow}{v\-Window} class holds a list of events for a period of time as specified. Event expiry is checked each time new events are added and expired events are removed. At any point in time a copy of the current list of events can be requested.  
+
+
+
+
+{\ttfamily \#include $<$v\-Window.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classemorph_1_1vWindow_ae7e0ebcfb7ca683596a967246d609650}{v\-Window} (int width=128, int height=128, int duration=20000)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classemorph_1_1vWindow}{v\-Window} constructor \end{DoxyCompactList}\item 
+\hypertarget{classemorph_1_1vWindow_a6f79791c8d68c07c73d0e8239be1e51e}{{\bfseries v\-Window} (const \hyperlink{classemorph_1_1vWindow}{v\-Window} \&)}\label{classemorph_1_1vWindow_a6f79791c8d68c07c73d0e8239be1e51e}
+
+\item 
+\hypertarget{classemorph_1_1vWindow_ae1cc66633b2fe2e8af91669a26e679d8}{\hyperlink{classemorph_1_1vWindow}{v\-Window} {\bfseries operator=} (const \hyperlink{classemorph_1_1vWindow}{v\-Window} \&)}\label{classemorph_1_1vWindow_ae1cc66633b2fe2e8af91669a26e679d8}
+
+\item 
+void \hyperlink{classemorph_1_1vWindow_aedf610895d1ed7d606e5ab403436f200}{set\-Temporal\-Window\-Size} (int duration)
+\begin{DoxyCompactList}\small\item\em set\-Window\-Size sets the length of time to store events \end{DoxyCompactList}\item 
+void \hyperlink{classemorph_1_1vWindow_ab64b89bf88b7f5460bcea85a0fe31e1c}{add\-Event} (\hyperlink{classemorph_1_1vEvent}{emorph\-::v\-Event} \&event)
+\begin{DoxyCompactList}\small\item\em add\-Event adds an event to the window. Also checks for expired events. \end{DoxyCompactList}\item 
+\hyperlink{classemorph_1_1vEvent}{v\-Event} $\ast$ \hyperlink{classemorph_1_1vWindow_a20c61b89d6ef1acad4e6c6d7bac89a5b}{get\-Most\-Recent} ()
+\begin{DoxyCompactList}\small\item\em get\-Most\-Recent \end{DoxyCompactList}\item 
+const \hyperlink{classemorph_1_1vQueue}{v\-Queue} \& \hyperlink{classemorph_1_1vWindow_a0866119cfd77cba8e5b62e0d7a4af195}{get\-T\-W} ()
+\begin{DoxyCompactList}\small\item\em get\-Window \end{DoxyCompactList}\item 
+\hypertarget{classemorph_1_1vWindow_a3b68c6c2fb8b1b5988b52f8703dff171}{void {\bfseries copy\-T\-W\-T\-O} (\hyperlink{classemorph_1_1vQueue}{v\-Queue} \&that)}\label{classemorph_1_1vWindow_a3b68c6c2fb8b1b5988b52f8703dff171}
+
+\item 
+const \hyperlink{classemorph_1_1vQueue}{v\-Queue} \& \hyperlink{classemorph_1_1vWindow_a49b43ccdd801608a72f962a2db9b9fc6}{get\-S\-T\-W} (int x, int y, int d)
+\begin{DoxyCompactList}\small\item\em get\-Spatial\-Window returns Address\-Events within a spatial window \end{DoxyCompactList}\item 
+const \hyperlink{classemorph_1_1vQueue}{v\-Queue} \& \hyperlink{classemorph_1_1vWindow_aa6691b1453a5abff9d16001b314ee3ae}{get\-S\-T\-W} (int xl, int xh, int yl, int yh)
+\begin{DoxyCompactList}\small\item\em get\-Spatial\-Window returns Address\-Events within a spatial window \end{DoxyCompactList}\item 
+\hypertarget{classemorph_1_1vWindow_a4ad3e6a65dea8ad0cf52b03ef41fe8fb}{const \hyperlink{classemorph_1_1vQueue}{v\-Queue} \& {\bfseries get\-S\-M\-A\-R\-T\-S\-T\-W} (int d)}\label{classemorph_1_1vWindow_a4ad3e6a65dea8ad0cf52b03ef41fe8fb}
+
+\item 
+\hypertarget{classemorph_1_1vWindow_ad03a49288c115cfec54462d356606033}{const \hyperlink{classemorph_1_1vQueue}{v\-Queue} \& {\bfseries get\-S\-U\-R\-F} (int pol)}\label{classemorph_1_1vWindow_ad03a49288c115cfec54462d356606033}
+
+\item 
+\hypertarget{classemorph_1_1vWindow_a7c4dd7d2f436537552b9d0c42c1263b3}{const \hyperlink{classemorph_1_1vQueue}{v\-Queue} \& {\bfseries get\-S\-M\-A\-R\-T\-S\-U\-R\-F} (int d)}\label{classemorph_1_1vWindow_a7c4dd7d2f436537552b9d0c42c1263b3}
+
+\item 
+\hypertarget{classemorph_1_1vWindow_a97de6f3768adfe0fe87c9d538effe944}{const \hyperlink{classemorph_1_1vQueue}{v\-Queue} \& {\bfseries get\-S\-U\-R\-F} (int x, int y, int d, int pol)}\label{classemorph_1_1vWindow_a97de6f3768adfe0fe87c9d538effe944}
+
+\item 
+\hypertarget{classemorph_1_1vWindow_ae73175dc01dfe590770deedc14057f28}{const \hyperlink{classemorph_1_1vQueue}{v\-Queue} \& {\bfseries get\-S\-U\-R\-F} (int xl, int xh, int yl, int yh, int pol)}\label{classemorph_1_1vWindow_ae73175dc01dfe590770deedc14057f28}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classemorph_1_1vWindow}{v\-Window} class holds a list of events for a period of time as specified. Event expiry is checked each time new events are added and expired events are removed. At any point in time a copy of the current list of events can be requested. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classemorph_1_1vWindow_ae7e0ebcfb7ca683596a967246d609650}{\index{emorph\-::v\-Window@{emorph\-::v\-Window}!v\-Window@{v\-Window}}
+\index{v\-Window@{v\-Window}!emorph::vWindow@{emorph\-::v\-Window}}
+\subsubsection[{v\-Window}]{\setlength{\rightskip}{0pt plus 5cm}emorph\-::v\-Window\-::v\-Window (
+\begin{DoxyParamCaption}
+\item[{int}]{width = {\ttfamily 128}, }
+\item[{int}]{height = {\ttfamily 128}, }
+\item[{int}]{duration = {\ttfamily 20000}}
+\end{DoxyParamCaption}
+)}}\label{classemorph_1_1vWindow_ae7e0ebcfb7ca683596a967246d609650}
+
+
+\hyperlink{classemorph_1_1vWindow}{v\-Window} constructor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window\-Size} & optional time to store events (in us) \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classemorph_1_1vWindow_ab64b89bf88b7f5460bcea85a0fe31e1c}{\index{emorph\-::v\-Window@{emorph\-::v\-Window}!add\-Event@{add\-Event}}
+\index{add\-Event@{add\-Event}!emorph::vWindow@{emorph\-::v\-Window}}
+\subsubsection[{add\-Event}]{\setlength{\rightskip}{0pt plus 5cm}void emorph\-::v\-Window\-::add\-Event (
+\begin{DoxyParamCaption}
+\item[{{\bf emorph\-::v\-Event} \&}]{event}
+\end{DoxyParamCaption}
+)}}\label{classemorph_1_1vWindow_ab64b89bf88b7f5460bcea85a0fe31e1c}
+
+
+add\-Event adds an event to the window. Also checks for expired events. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & the event to add \\
+\hline
+\end{DoxyParams}
+\hypertarget{classemorph_1_1vWindow_a20c61b89d6ef1acad4e6c6d7bac89a5b}{\index{emorph\-::v\-Window@{emorph\-::v\-Window}!get\-Most\-Recent@{get\-Most\-Recent}}
+\index{get\-Most\-Recent@{get\-Most\-Recent}!emorph::vWindow@{emorph\-::v\-Window}}
+\subsubsection[{get\-Most\-Recent}]{\setlength{\rightskip}{0pt plus 5cm}{\bf v\-Event} $\ast$ emorph\-::v\-Window\-::get\-Most\-Recent (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classemorph_1_1vWindow_a20c61b89d6ef1acad4e6c6d7bac89a5b}
+
+
+get\-Most\-Recent 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classemorph_1_1vWindow_a49b43ccdd801608a72f962a2db9b9fc6}{\index{emorph\-::v\-Window@{emorph\-::v\-Window}!get\-S\-T\-W@{get\-S\-T\-W}}
+\index{get\-S\-T\-W@{get\-S\-T\-W}!emorph::vWindow@{emorph\-::v\-Window}}
+\subsubsection[{get\-S\-T\-W}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf v\-Queue} \& emorph\-::v\-Window\-::get\-S\-T\-W (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{int}]{d}
+\end{DoxyParamCaption}
+)}}\label{classemorph_1_1vWindow_a49b43ccdd801608a72f962a2db9b9fc6}
+
+
+get\-Spatial\-Window returns Address\-Events within a spatial window 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & x centre \\
+\hline
+{\em y} & y centre \\
+\hline
+{\em d} & distance of the half-\/length of a square window \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a \hyperlink{classemorph_1_1vQueue}{v\-Queue} containing a copy of the events 
+\end{DoxyReturn}
+\hypertarget{classemorph_1_1vWindow_aa6691b1453a5abff9d16001b314ee3ae}{\index{emorph\-::v\-Window@{emorph\-::v\-Window}!get\-S\-T\-W@{get\-S\-T\-W}}
+\index{get\-S\-T\-W@{get\-S\-T\-W}!emorph::vWindow@{emorph\-::v\-Window}}
+\subsubsection[{get\-S\-T\-W}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf v\-Queue} \& emorph\-::v\-Window\-::get\-S\-T\-W (
+\begin{DoxyParamCaption}
+\item[{int}]{xl, }
+\item[{int}]{xh, }
+\item[{int}]{yl, }
+\item[{int}]{yh}
+\end{DoxyParamCaption}
+)}}\label{classemorph_1_1vWindow_aa6691b1453a5abff9d16001b314ee3ae}
+
+
+get\-Spatial\-Window returns Address\-Events within a spatial window 
+
+
+\begin{DoxyParams}{Parameters}
+{\em xl} & lower x value of window \\
+\hline
+{\em xh} & upper x value of window \\
+\hline
+{\em yl} & lower y value of window \\
+\hline
+{\em yh} & upper y value of window \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a \hyperlink{classemorph_1_1vQueue}{v\-Queue} containing a copy of the events 
+\end{DoxyReturn}
+\hypertarget{classemorph_1_1vWindow_a0866119cfd77cba8e5b62e0d7a4af195}{\index{emorph\-::v\-Window@{emorph\-::v\-Window}!get\-T\-W@{get\-T\-W}}
+\index{get\-T\-W@{get\-T\-W}!emorph::vWindow@{emorph\-::v\-Window}}
+\subsubsection[{get\-T\-W}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf v\-Queue} \& emorph\-::v\-Window\-::get\-T\-W (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classemorph_1_1vWindow_a0866119cfd77cba8e5b62e0d7a4af195}
+
+
+get\-Window 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classemorph_1_1vWindow_aedf610895d1ed7d606e5ab403436f200}{\index{emorph\-::v\-Window@{emorph\-::v\-Window}!set\-Temporal\-Window\-Size@{set\-Temporal\-Window\-Size}}
+\index{set\-Temporal\-Window\-Size@{set\-Temporal\-Window\-Size}!emorph::vWindow@{emorph\-::v\-Window}}
+\subsubsection[{set\-Temporal\-Window\-Size}]{\setlength{\rightskip}{0pt plus 5cm}void emorph\-::v\-Window\-::set\-Temporal\-Window\-Size (
+\begin{DoxyParamCaption}
+\item[{int}]{duration}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classemorph_1_1vWindow_aedf610895d1ed7d606e5ab403436f200}
+
+
+set\-Window\-Size sets the length of time to store events 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window\-Size} & the time period (in us) \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/aglover/workspace/projects/event\-Driven/emorph\-\_\-lib/include/i\-Cub/emorph/v\-Window.\-h\item 
+/home/aglover/workspace/projects/event\-Driven/emorph\-\_\-lib/src/v\-Window.\-cpp\end{DoxyCompactItemize}
