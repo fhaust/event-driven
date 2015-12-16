@@ -16,8 +16,20 @@
 </module>
 
 <module>
+<name>yarpdatadumper</name>
+<parameters> --name /datadumper/character/1/vnt/ --connect /zynqGrabber/vBottle:o --overwrite true</parameters>
+<node>localhost</node>
+</module>
+
+<module>
+    <name> eventAnalysis</name>
+    <parameters> --name ESD --dir /home/icub/datadumper/character/1/vnt/ </parameters>
+    <node>localhost</node>
+</module>
+
+<module>
 <name>vFramer</name>
-<parameters> --name vFramerZynq --frameRate 60 --eventWindow 0.02 --displays "(0 zynqGrabber (AE))"</parameters>
+<parameters> --name vFramerZynq --retinaHeight 64 --retinaWidth 64 --frameRate 60 --eventWindow 0.02 --displays "(0 zynqGrabber (AE))"</parameters>
 <node>localhost</node>
 </module>
 
@@ -62,6 +74,12 @@
 <from>/vFramerZynq/zynqGrabber</from>
 <to>/viewZynq</to>
 <protocol>tcp</protocol>
+</connection>
+
+<connection>
+  <from>/zynqGrabber/vBottle:o</from>
+  <to>/ESD/vBottle:i</to>
+  <protocol>tcp</protocol>
 </connection>
 
 </application>
