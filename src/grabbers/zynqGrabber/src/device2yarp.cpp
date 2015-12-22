@@ -108,11 +108,11 @@ void  device2yarp::run() {
         int polarity=word0&0x01;
         word0>>=1;
 
-        int x=word0&0x7f;
-        word0>>=7;
+        int x=word0&0x3f;
+        word0>>=6;
 
-        int y=word0&0x7f;
-        word0>>=7;
+        int y=word0&0x3f;
+        word0>>=6;
 
         int channel=word0&0x01;
 
