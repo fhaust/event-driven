@@ -629,20 +629,21 @@ int vsctrlDevManager::readGPORegister(){
 aerDevManager::aerDevManager(std::string dev){
     
     if (dev == "zynq_spinn")
-        {
-        
-            this->deviceName = "/dev/iit_sp2neu";
-    
-        } else if (dev == "zynq_sens")
-        {
-            
-            this->deviceName = "/dev/iit_hpucore";
-        
-        } else {
-            
-            std::cout << "aer device error: unrecognised device" << std::endl;
-            
-        }
+    {
+        this->deviceName = "/dev/iit_sp2neu";
+    }
+    else if (dev == "zynq_sens")
+    {
+        this->deviceName = "/dev/iit_hpucore";
+    }
+    else if (dev == "neuelab")
+    {
+        this->deviceName = "/dev/neuelab";
+    }
+    else
+    {
+        std::cout << "aer device error: unrecognised device" << std::endl;
+    }
     
     deviceManager(true, AER_MAX_BUF_SIZE);
 }
