@@ -164,7 +164,7 @@ vEvent* AddressEvent::clone() {
 void AddressEvent::encode(yarp::os::Bottle &b) const
 {
     vEvent::encode(b);
-    b.addInt(((channel&0x01)<<15)|((y&0x7f)<<8)|((x&0x7f)<<1)|(polarity&0x01));
+    b.addInt(((channel&0x01)<<13)|((y&0x3f)<<7)|((x&0x3f)<<1)|(polarity&0x01));
 }
 
 /******************************************************************************/
@@ -178,12 +178,12 @@ bool AddressEvent::decode(const yarp::os::Bottle &packet, int &pos)
         polarity=word0&0x01;
 
         word0>>=1;
-        x=word0&0x7f;
+        x=word0&0x3f;
 
-        word0>>=7;
-        y=word0&0x7f;
+        word0>>=6;
+        y=word0&0x3f;
 
-        word0>>=7;
+        word0>>=6;
         channel=word0&0x01;
 
         pos += localWordsCoded;
