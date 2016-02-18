@@ -65,7 +65,7 @@ bool zynqGrabberModule::configure(yarp::os::ResourceFinder &rf) {
     }
     
     
-    if(device == "zynq_spinn" || device == "zynq_sens") {
+    if(device == "zynq_spinn" || device == "zynq_sens" || device == "neuelab") {
         
         // class manageDevice for events
         aerManager = new aerDevManager(device);
