@@ -99,6 +99,14 @@ void dPepperIO::close()
     //close ports
     outPort.close();
     yarp::os::BufferedPort<emorph::vBottle>::close();
+
+    // [latency] write out timestamps
+    FILE * f = fopen("timestamps-dpepper.csv", "w");
+    for( unsigned int i = 0; i < startTimes.size(); i++ )
+    {
+      fprintf(f, "%f,%f,%f\n", bottleTimes[i], startTimes[i], endTimes[i]);
+    }
+    fclose(f);
 }
 
 /**********************************************************/
@@ -112,12 +120,19 @@ void dPepperIO::interrupt()
 /**********************************************************/
 void dPepperIO::onRead(emorph::vBottle &bot)
 {
+
+    // [timing] take start time
+    startTimes.push_back(yarp::os::Time::now());
+
     //create event queue
     yarp::os::Stamp yts;
     this->getEnvelope(yts);
     emorph::vQueue q = bot.getAll();
     //create queue iterator
     emorph::vQueue::iterator qi, wi;
+
+    // [timing] take bottle time
+    bottleTimes.push_back(yts.getTime());
 
     // prepare output vBottle with address events extended with cluster ID (aec) and cluster events (clep)
     emorph::vBottle &outBottle = outPort.prepare();
@@ -164,6 +179,9 @@ void dPepperIO::onRead(emorph::vBottle &bot)
     }
     //send on the processed events
     outPort.write();
+
+    // [latency] take end time
+    endTimes.push_back(yarp::os::Time::now());
 
 }
 

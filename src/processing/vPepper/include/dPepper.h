@@ -42,6 +42,10 @@ private:
     double spatialSize;
     double temporalSize;
 
+    std::vector<double> bottleTimes;
+    std::vector<double> startTimes;
+    std::vector<double> endTimes;
+
 public:
 
     dPepperIO();
