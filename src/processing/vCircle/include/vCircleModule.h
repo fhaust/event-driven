@@ -106,6 +106,9 @@ private:
     bool singleq;
     double tsoffset;
 
+    std::vector<double> bottleTimes;
+    std::vector<double> startTimes;
+    std::vector<double> endTimes;
 
 public:
 

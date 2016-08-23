@@ -178,6 +178,13 @@ void vCircleReader::close()
     dumpOut.close();
     yarp::os::BufferedPort<emorph::vBottle>::close();
 
+    // [latency] write out timestamps
+    FILE * f = fopen("timestamps-vcircle.csv", "w");
+    for( unsigned int i = 0; i < startTimes.size(); i++ )
+    {
+      fprintf(f, "%f,%f,%f\n", bottleTimes[i], startTimes[i], endTimes[i]);
+    }
+    fclose(f);
 }
 
 /******************************************************************************/
@@ -213,6 +220,9 @@ void drawcircle(yarp::sig::ImageOf<yarp::sig::PixelBgr> &image, int cx, int cy, 
 /******************************************************************************/
 void vCircleReader::onRead(emorph::vBottle &inBot)
 {
+    // [timing] take start time
+    startTimes.push_back(yarp::os::Time::now());
+
     // ///////////////////
     // get the data & set-up
     // ///////////////////
@@ -224,6 +234,9 @@ void vCircleReader::onRead(emorph::vBottle &inBot)
     this->getEnvelope(st); outPort.setEnvelope(st);
     if(!pstamp.isValid()) pstamp = st;
     if(pstampcounter < 0) pstampcounter = st.getCount();
+
+    // [timing] take bottle time
+    bottleTimes.push_back(st.getTime());
 
     //create event queue
     emorph::vQueue q = inBot.get<emorph::AddressEvent>();
@@ -378,6 +391,9 @@ void vCircleReader::onRead(emorph::vBottle &inBot)
         houghOut.write();
         //std::cout << "Processing Time" << timecounter << ", Hough response: " << cObserver->getObs(bestx, besty, bestr) << std::endl;
     }
+
+    // [latency] take end time
+    endTimes.push_back(yarp::os::Time::now());
 
 
 }
